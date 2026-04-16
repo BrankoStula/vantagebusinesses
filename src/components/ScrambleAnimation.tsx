@@ -4,9 +4,12 @@ import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 
+// Register at module level — runs before any hooks, no risk of running
+// after a useGSAP that tries to use ScrambleText on its first tick
+gsap.registerPlugin(ScrambleTextPlugin);
+
 export default function ScrambleAnimation() {
   useEffect(() => {
-    gsap.registerPlugin(ScrambleTextPlugin);
 
     const tl = gsap.timeline({ repeat: -1 });
     tl.to(".scramble.v1", {

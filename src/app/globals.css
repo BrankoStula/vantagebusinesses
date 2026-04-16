@@ -2,7 +2,61 @@
 @import "../styles/webflow.css";
 @import "../styles/webflow-site.css";
 
-/* Suppress Webflow visibility-hidden init — not needed in React */
+/* Hero entrance animation. Only opacity is safe to pre-set here because
+   GSAP should own any transforms it animates later. */
+.bg-animation-hero,
+.wrapper-subcontent-hero.v1,
+.wrapper-subcontent-hero.v2,
+.wrapper-subcontent-hero.v3,
+.lottie-scroll { opacity: 0; }
+
+/* Clip the mobile nav panel while it slides in/out */
+.navbar-mobile { overflow: hidden; }
+
+/* Next.js <Image> emits height HTML attributes that pin height even when CSS only
+   sets width. These overrides restore natural aspect-ratio scaling.
+   Add here for every class whose size is driven by a CSS width rule. */
+.image-icon-hero,
+.logo-navbar,
+.logo-partner,
+.icon-product,
+.logo-footer img { height: auto; }
+
+.icon-product {
+  filter:
+    grayscale(var(--icon-gray, 100%))
+    brightness(var(--icon-brightness, 100%))
+    contrast(var(--icon-contrast, 100%));
+}
+
+.sr-only {
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  position: absolute;
+}
+
+.hero-text-layout {
+  max-width: 18ch;
+  margin-inline: auto;
+}
+
+.hero-text-lines {
+  flex-direction: column;
+  align-items: center;
+  display: inline-flex;
+}
+
+.hero-text-line {
+  display: block;
+}
+
+/* Suppress Webflow visibility-hidden init - not needed in React */
 .icon-integration.v4,
 .icon-integration.v1,
 .icon-integration.v2,

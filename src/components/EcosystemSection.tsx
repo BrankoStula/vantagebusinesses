@@ -1,7 +1,23 @@
 "use client";
 
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { CustomEase } from "gsap/CustomEase";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+
+gsap.registerPlugin(ScrollTrigger, CustomEase);
+
+const partnerHoverScaleEase = CustomEase.create(
+  "partnerHoverScaleEase",
+  "M0,0 C0.22,1 0.36,1 1,1"
+);
+const partnerHoverFilterEase = CustomEase.create(
+  "partnerHoverFilterEase",
+  "M0,0 C0.4,0 0.2,1 1,1"
+);
 
 const DotLottieReact = dynamic(
   () => import("@lottiefiles/dotlottie-react").then((m) => m.DotLottieReact),
@@ -22,8 +38,120 @@ const partners = [
 ];
 
 export default function EcosystemSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      const section = sectionRef.current;
+      if (!section) return;
+
+      const wrapper = section.querySelector<HTMLElement>(".wrapper-partner");
+      const partnerMove = section.querySelector<HTMLElement>(".block-partner-move");
+      const partnerTrack = section.querySelector<HTMLElement>(".block-partners");
+      const partnerRow = section.querySelector<HTMLElement>(".partner");
+      const borderFill = section.querySelector<HTMLElement>(".border.fill");
+      const partnerCards = gsap.utils.toArray<HTMLElement>(".block-partner", section);
+
+      if (!wrapper || !partnerMove || !partnerTrack || !partnerRow || !borderFill || !partnerCards.length) {
+        return;
+      }
+
+      gsap.set(partnerTrack, { xPercent: 0 });
+      gsap.set(partnerMove, { x: "0vw" });
+      gsap.set(borderFill, { xPercent: -100 });
+      gsap.set(partnerCards, {
+        scale: 1,
+        filter: "brightness(100%) blur(0px)",
+        transformOrigin: "50% 50%",
+      });
+
+      gsap.to(partnerTrack, {
+        xPercent: -50,
+        duration: 20,
+        ease: "none",
+        repeat: -1,
+      });
+
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: wrapper,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 0.5,
+        },
+      })
+        .to(partnerMove, { x: "0vw", ease: "none", duration: 0.1 })
+        .to(partnerMove, { x: "-15vw", ease: "none", duration: 0.8 })
+        .to(partnerMove, { x: "-15vw", ease: "none", duration: 0.1 });
+
+      gsap.to(borderFill, {
+        xPercent: 100,
+        duration: 10,
+        ease: "none",
+        repeat: -1,
+      });
+
+      const hasHoverPointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      if (!hasHoverPointer) return;
+
+      const resetCards = () => {
+        gsap.killTweensOf(partnerCards);
+        gsap.to(partnerCards, {
+          scale: 1,
+          filter: "brightness(100%) blur(0px)",
+          duration: 0.5,
+          ease: partnerHoverFilterEase,
+          overwrite: true,
+          stagger: 0,
+        });
+      };
+
+      const focusCard = (activeCard: HTMLElement) => {
+        gsap.killTweensOf(partnerCards);
+
+        partnerCards.forEach((card) => {
+          if (card === activeCard) {
+            gsap.to(card, {
+              scale: 1.5,
+              filter: "brightness(200%) blur(0px)",
+              duration: 0.8,
+              ease: partnerHoverScaleEase,
+              overwrite: true,
+            });
+            return;
+          }
+
+          gsap.to(card, {
+            scale: 1,
+            filter: "brightness(100%) blur(2px)",
+            duration: 0.5,
+            ease: partnerHoverFilterEase,
+            overwrite: true,
+          });
+        });
+      };
+
+      const cleanups = partnerCards.map((card) => {
+        const handleEnter = () => focusCard(card);
+        card.addEventListener("mouseenter", handleEnter);
+
+        return () => {
+          card.removeEventListener("mouseenter", handleEnter);
+        };
+      });
+
+      partnerRow.addEventListener("mouseleave", resetCards);
+
+      return () => {
+        partnerRow.removeEventListener("mouseleave", resetCards);
+        cleanups.forEach((cleanup) => cleanup());
+      };
+    },
+    { scope: sectionRef }
+  );
+
   return (
-    <section className="main-section">
+    <section className="main-section" ref={sectionRef}>
       <div className="w-layout-blockcontainer main-container w-container">
         <div className="wrapper-partner">
           <div className="title-partner">
@@ -54,7 +182,7 @@ export default function EcosystemSection() {
                       <Image
                         src={p.src}
                         alt={p.alt}
-                        width={120}
+                        width={240}
                         height={40}
                         className="logo-partner"
                       />

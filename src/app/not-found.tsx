@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Link from "next/link";
+import ButtonPrimary from "@/components/ButtonPrimary";
 
 export default function NotFound() {
   return (
@@ -13,16 +13,7 @@ export default function NotFound() {
               404
             </div>
             <div className="text-secondary">Page not found</div>
-            <Link href="/" className="button-primary w-inline-block">
-              <div className="wrapper-button-primary">
-                <div className="wrapper-button-primary-text">
-                  <div className="text-menu">Back Home</div>
-                </div>
-                <div className="wrapper-button-primary-bg">
-                  <div className="bg-button-primary"></div>
-                </div>
-              </div>
-            </Link>
+            <ButtonPrimary href="/" label="Back Home" />
           </div>
         </div>
       </section>
