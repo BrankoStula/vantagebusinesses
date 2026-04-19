@@ -20,13 +20,27 @@
 .logo-navbar,
 .logo-partner,
 .icon-product,
-.logo-footer img { height: auto; }
+.logo-footer img,
+.image-content-lab,
+.pie { height: auto; }
 
 .icon-product {
   filter:
     grayscale(var(--icon-gray, 100%))
     brightness(var(--icon-brightness, 100%))
     contrast(var(--icon-contrast, 100%));
+}
+
+.block-scan-lab {
+  pointer-events: none;
+  z-index: 4;
+}
+
+#lab .content-desc-lab,
+#lab .content-desc-lab.v2,
+#lab .content-desc-lab.v3,
+#lab .content-desc-lab.v4 {
+  opacity: 0;
 }
 
 .sr-only {

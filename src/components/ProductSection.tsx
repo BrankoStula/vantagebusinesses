@@ -33,6 +33,9 @@ const PRODUCT_STEPS = [
     raiseIconDuration: 1,
     raiseIconEase: "none",
     hideAt: 3.6,
+    settleGrayAt: 3.6,
+    settleGrayDuration: 0.35,
+    settleGrayTo: "100%",
     lowerBlockAt: 3.6,
     lowerBlockDuration: 0.86,
     lowerBlockEase: "none",
@@ -57,6 +60,9 @@ const PRODUCT_STEPS = [
     raiseIconDuration: 1,
     raiseIconEase: "none",
     hideAt: 6.05,
+    settleGrayAt: 6.05,
+    settleGrayDuration: 0.35,
+    settleGrayTo: "100%",
     lowerBlockAt: 6.05,
     lowerBlockDuration: 0.86,
     lowerBlockEase: "none",
@@ -81,6 +87,9 @@ const PRODUCT_STEPS = [
     raiseIconDuration: 1,
     raiseIconEase: "none",
     hideAt: 8.58,
+    settleGrayAt: 8.58,
+    settleGrayDuration: 0.35,
+    settleGrayTo: "100%",
     lowerBlockAt: 8.58,
     lowerBlockDuration: 0.86,
     lowerBlockEase: "power1.out",
@@ -104,11 +113,14 @@ const PRODUCT_STEPS = [
     raiseIconAt: 9.94,
     raiseIconDuration: 1,
     raiseIconEase: "power1.in",
-    hideAt: 11,
-    lowerBlockAt: 11,
+    hideAt: 10.95,
+    settleGrayAt: 10.95,
+    settleGrayDuration: 0.35,
+    settleGrayTo: "0%",
+    lowerBlockAt: 10.95,
     lowerBlockDuration: 0.86,
     lowerBlockEase: "none",
-    lowerIconAt: 11,
+    lowerIconAt: 11.18,
     lowerIconDuration: 0.65,
     lowerIconEase: "none",
   },
@@ -234,6 +246,7 @@ export default function ProductSection() {
       steps.forEach((step, index) => {
         const bodyTargets = [...step.smallTargets, ...step.scrambleTargets];
         const fullTargets = [...bodyTargets, ...step.titleTargets];
+        const isLastStep = index === steps.length - 1;
 
         mainTl
           .to(bodyTargets, { opacity: 1, duration: 0 }, step.showBodyAt)
@@ -267,22 +280,33 @@ export default function ProductSection() {
               ease: step.raiseIconEase,
             },
             step.raiseIconAt
+          )
+          .to(
+            step.icon,
+            {
+              "--icon-gray": step.settleGrayTo,
+              duration: step.settleGrayDuration,
+              ease: "none",
+            },
+            step.settleGrayAt
           );
 
-        if (index === steps.length - 1) return;
+        if (!isLastStep) {
+          mainTl
+            .to(fullTargets, { opacity: 0, duration: 0 }, step.hideAt)
+            .to(
+              step.badge,
+              {
+                backgroundColor: INACTIVE_BADGE_BG,
+                borderColor: INACTIVE_BADGE_BORDER,
+                color: INACTIVE_BADGE_TEXT,
+                duration: 0,
+              },
+              step.hideAt
+            );
+        }
 
         mainTl
-          .to(fullTargets, { opacity: 0, duration: 0 }, step.hideAt)
-          .to(
-            step.badge,
-            {
-              backgroundColor: INACTIVE_BADGE_BG,
-              borderColor: INACTIVE_BADGE_BORDER,
-              color: INACTIVE_BADGE_TEXT,
-              duration: 0,
-            },
-            step.hideAt
-          )
           .to(
             step.block,
             {
@@ -297,7 +321,6 @@ export default function ProductSection() {
             {
               y: "0vw",
               rotation: 0,
-              "--icon-gray": "100%",
               duration: step.lowerIconDuration,
               ease: step.lowerIconEase,
             },
@@ -358,12 +381,9 @@ export default function ProductSection() {
 
         const resetPulse = () => {
           pulseTl.pause(0);
-          gsap.to(step.icon, {
+          gsap.set(step.icon, {
             "--icon-brightness": "100%",
             "--icon-contrast": "100%",
-            duration: 0.2,
-            ease: "none",
-            overwrite: true,
           });
         };
 
