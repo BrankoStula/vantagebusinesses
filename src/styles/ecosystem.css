@@ -34,7 +34,8 @@
 .partner {
   grid-column-gap: var(--gap--gap-8x);
   grid-row-gap: var(--gap--gap-8x);
-  height: 4vw;
+  height: 3vw;
+  align-items: center;
   display: flex;
 }
 
@@ -42,12 +43,45 @@
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  max-width: 12vw;
+  width: 10vw;
+  height: 100%;
   display: flex;
+  flex-shrink: 0;
 }
 
 .logo-partner {
-  filter: brightness(40%);
+  filter: brightness(0) invert(1);
+  opacity: 0.45;
+  width: auto;
+  height: 100%;
+  max-height: 2.4vw;
+  max-width: 10vw;
+  object-fit: contain;
+  transition: opacity 0.3s ease;
+}
+
+.block-partner:hover .logo-partner {
+  opacity: 0.9;
+}
+
+@keyframes ecosystemColorPulse {
+  0%, 100% { color: var(--color--gray, #555); }
+  50% { color: var(--color--blue, #229eff); }
+}
+
+
+.wrapper-partner .small-text.secondary.animation-loop {
+  animation: ecosystemColorPulse 3s ease-in-out infinite;
+}
+
+/* left description text starts dark — GSAP scrolltrigger transitions to white */
+.wrapper-partner .small-text.animation {
+  color: var(--color--dark-gray, #333);
+}
+
+/* lottie star bigger */
+.wrapper-partner .lottie-plus {
+  width: 6vw;
 }
 
 .block-partners {
@@ -62,6 +96,8 @@
 .wrapper-partners {
   position: relative;
   overflow: hidden;
+  padding-top: 1.5vw;
+  padding-bottom: 1.5vw;
 }
 
 .block-partner-move {
@@ -88,7 +124,12 @@
 /* Responsive */
 @media screen and (max-width: 991px) {
   .block-partner {
-    max-width: 15vw;
+    width: 15vw;
+  }
+
+  .logo-partner {
+    max-height: 3.5vw;
+    max-width: 13vw;
   }
 }
 
@@ -113,7 +154,12 @@
   }
 
   .block-partner {
-    max-width: 28vw;
+    width: 28vw;
+  }
+
+  .logo-partner {
+    max-height: 6vw;
+    max-width: 24vw;
   }
 
   .block-partners, .block-partner-move {

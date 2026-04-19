@@ -1,5 +1,5 @@
 /* ============================================================
-   CTA SECTION
+   CTA SECTION (WIDE LAYOUT, GLASSMORPHISM)
    ============================================================ */
 
 .cta {
@@ -17,22 +17,261 @@
   background-attachment: scroll, scroll, scroll, fixed;
   max-width: 100%;
   position: relative;
+  padding: 6rem 2rem;
 }
 
-.cta-content {
-  padding-top: var(--layout--section-spacing-2x);
-  padding-bottom: var(--layout--section-spacing-2x);
-  grid-column-gap: var(--gap--gap-2x);
-  grid-row-gap: var(--gap--gap-2x);
-  flex-flow: column;
+.cta-wrapper {
+  max-width: 1400px;
+  width: 96%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cta-text-content {
+  text-align: center;
+  width: 100%;
+}
+
+.cta-split-layout {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr; /* Form gets more space */
+  gap: 3rem;
+  width: 100%;
+  align-items: stretch;
+}
+
+/* --- FORM & INFO CONTAINERS (GLASS & 12px RADIUS) --- */
+.cta-form-container,
+.info-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(12, 12, 12, 0.6); /* Premium dark glass */
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle glass edge */
+  border-radius: 12px;
+  padding: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* FORM FIELDS */
+.evaluation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+.form-row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.form-label {
+  color: #e0e0e0;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* Inputs with 10px radius */
+/* Inputs with 10px radius */
+.form-input {
+  width: 100%;
+  padding: 1.15rem 1.25rem; 
+  background-color: rgba(0, 0, 0, 0.4); 
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s;
+  font-family: inherit;
+}
+
+/* Add this specifically for the textarea */
+.form-textarea {
+  resize: none; /* Prevents users from stretching the box and breaking layout */
+  min-height: 100px;
+}
+
+.form-input:focus {
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-color: #229eff;
+  box-shadow: 0 0 0 3px rgba(34, 158, 255, 0.15);
+}
+
+.form-input::placeholder { color: #666; }
+
+/* ACTION ROW & SUBMIT BUTTON */
+.form-action-row {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  gap: 1.25rem; 
+  align-items: center; /* Changed from stretch to center so they don't get too tall */
+}
+
+/* This forces both buttons to take up equal width, but PERFECTLY centers the text inside them */
+.form-action-row > * {
+  flex: 1;
+  width: 100%;
+  text-align: center;
+  display: flex !important;
   justify-content: center;
   align-items: center;
+}
+
+/* Secondary Button styling - reduced padding and font size to make it smaller */
+.form-submit-btn {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 100px; 
+  padding: 0.7rem 1.25rem; /* Reduced padding for a smaller, sleeker button */
+  font-size: 0.9rem; /* Slightly smaller text */
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  gap: 8px; 
+}
+
+.form-submit-btn:hover { 
+  background-color: #ffffff; 
+  color: #000000;
+  border-color: #ffffff;
+}
+
+.form-submit-btn:active { transform: scale(0.98); }
+
+/* Arrow hover animation */
+.btn-arrow {
+  transition: transform 0.3s ease;
+}
+
+.form-submit-btn:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+
+/* --- CONTACT INFO CARD --- */
+.info-card-header {
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 1.5rem;
+}
+
+.info-title {
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+.info-subtitle {
+  color: #888;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.contact-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(34, 158, 255, 0.1);
+  color: #229eff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.contact-details strong {
+  display: block;
+  color: #a3a3a3;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.4rem;
+}
+
+.contact-details a,
+.contact-details span {
+  color: #ffffff;
+  font-size: 1.15rem;
+  text-decoration: none;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.contact-details a:hover {
+  color: #229eff;
+}
+
+/* SUCCESS STATE */
+.form-success-message {
+  text-align: center;
+  padding: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.success-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(34, 158, 255, 0.1);
+  color: #229eff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 /* Responsive */
-@media screen and (max-width: 479px) {
-  .cta {
-    height: 36vh;
-  }
+@media screen and (max-width: 991px) {
+  .cta-split-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .info-card, .cta-form-container { padding: 2.5rem; }
+}
+
+@media screen and (max-width: 767px) {
+  .form-row { flex-direction: column; gap: 1.5rem; }
+  .cta-form-container { padding: 2rem 1.5rem; }
+  .cta { padding: 4rem 1rem; }
+  .form-action-row { flex-direction: column; align-items: stretch; }
 }

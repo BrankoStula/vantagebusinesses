@@ -11,6 +11,7 @@
   flex-flow: column;
   display: flex;
   position: relative;
+  padding: 10px;
   overflow: hidden;
 }
 

@@ -123,6 +123,28 @@
 .wrapper-border.vertical.v1 {
   flex-flow: row;
   justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 1vw;
+}
+
+.border {
+  border: .1vw dashed var(--color--dark-gray);
+  background-color: #333;
+  width: 100%;
+  height: .1vw;
+}
+
+.border.fill {
+  z-index: 1;
+  background-color: var(--color--white);
+  background-image: none;
+  position: absolute;
+}
+
+.border.empty {
+  background-color: var(--color--base-color);
+  position: absolute;
 }
 
 /* Lottie utilities */
