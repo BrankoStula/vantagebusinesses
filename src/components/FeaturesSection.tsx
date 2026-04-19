@@ -8,16 +8,49 @@ import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const EVOLVING_TEXT = "EVOLVING";
+
 export default function FeaturesSection() {
   const container = useRef<HTMLElement>(null);
 
   useGSAP(
     () => {
-      const sections = gsap.utils.toArray<HTMLElement>(".content-feature");
-      sections.forEach((section) => {
+      gsap.to(".image-orbit.v1", {
+        rotate: 410,
+        duration: 5,
+        ease: "none",
+        repeat: -1,
+        transformOrigin: "50% 50%",
+      });
+
+      gsap.to(".image-orbit.v2", {
+        rotate: 360,
+        duration: 10,
+        ease: "none",
+        repeat: -1,
+        transformOrigin: "50% 50%",
+      });
+
+      gsap.to(".image-orbit.v3", {
+        rotate: 360,
+        duration: 20,
+        ease: "none",
+        repeat: -1,
+        transformOrigin: "50% 50%",
+      });
+
+      gsap.to(".image-orbit.v4", {
+        rotate: 390,
+        duration: 30,
+        ease: "none",
+        repeat: -1,
+        transformOrigin: "50% 50%",
+      });
+
+      gsap.utils.toArray<HTMLElement>(".content-feature").forEach((section) => {
         const mask = section.querySelector<HTMLElement>(".radial-mask");
         const empty = section.querySelector<HTMLElement>(".circle-empty");
-        const number = section.querySelector<HTMLElement>(".big-text");
+        const number = section.querySelector<HTMLElement>(".big-text.counting");
         const thinBorder = section.querySelector<HTMLElement>(".wrapper-text-counting");
 
         if (!mask || !empty || !number || !thinBorder) return;
@@ -29,28 +62,114 @@ export default function FeaturesSection() {
           opacity: 0.8,
           transformOrigin: "50% 50%",
         });
-        gsap.set(thinBorder, { borderColor: "rgba(156,163,175,0.35)" });
-        gsap.set(empty, { scale: 1, filter: "blur(10px)", opacity: 0.35 });
-        gsap.set(number, { innerText: "0" });
+        gsap.set(thinBorder, {
+          borderColor: "rgba(156,163,175,0.35)",
+        });
+        gsap.set(empty, {
+          scale: 1,
+          filter: "blur(10px)",
+          opacity: 0.35,
+        });
+        gsap.set(number, { innerText: 0 });
 
-        gsap.timeline({
-          scrollTrigger: {
-            trigger: section,
-            start: "top 75%",
-            end: "bottom 75%",
-            scrub: 0.6,
-          },
-        })
-          .to(mask, { rotate: 360, ease: "none" }, 0)
-          .to(mask, { scale: 1.05, filter: "blur(0px)", opacity: 1, ease: "none" }, 0)
-          .to(thinBorder, { borderColor: "rgba(59,130,246,0.7)", ease: "none" }, 0)
-          .to(empty, { scale: 1.15, filter: "blur(4px)", opacity: 0.55, ease: "none" }, 0)
+        gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: section,
+              start: "top 75%",
+              end: "bottom 75%",
+              scrub: 0.6,
+            },
+          })
+          .to(
+            mask,
+            {
+              rotate: 360,
+              ease: "none",
+            },
+            0
+          )
+          .to(
+            mask,
+            {
+              scale: 1.05,
+              filter: "blur(0px)",
+              opacity: 1,
+              ease: "none",
+            },
+            0
+          )
+          .to(
+            thinBorder,
+            {
+              borderColor: "rgba(59,130,246,0.7)",
+              ease: "none",
+            },
+            0
+          )
+          .to(
+            empty,
+            {
+              scale: 1.15,
+              filter: "blur(4px)",
+              opacity: 0.55,
+              ease: "none",
+            },
+            0
+          )
           .to(
             number,
-            { innerText: 100, snap: { innerText: 1 }, ease: "none" },
+            {
+              innerText: 100,
+              snap: { innerText: 1 },
+              ease: "none",
+            },
             0
           );
       });
+
+      const evolvingChars = gsap.utils.toArray<HTMLElement>(".features-loop-char");
+      if (evolvingChars.length) {
+        gsap.set(evolvingChars, { color: "#ffffff" });
+
+        const evolvingTimeline = gsap.timeline({
+          paused: true,
+          repeat: -1,
+          defaults: { ease: "power2.out" },
+        });
+
+        evolvingTimeline
+          .to(evolvingChars, {
+            color: "#229eff",
+            duration: 0.35,
+            stagger: { amount: 0.3, from: "random" },
+          })
+          .to(
+            evolvingChars,
+            {
+              color: "#1a1a1a",
+              duration: 0.35,
+              stagger: { amount: 0.22, from: "random" },
+            },
+            "+=0.05"
+          )
+          .to(
+            evolvingChars,
+            {
+              color: "#ffffff",
+              duration: 0.4,
+              stagger: { amount: 0.28, from: "random" },
+            },
+            "+=0.05"
+          );
+
+        ScrollTrigger.create({
+          trigger: container.current,
+          start: "top bottom",
+          once: true,
+          onEnter: () => evolvingTimeline.play(0),
+        });
+      }
     },
     { scope: container }
   );
@@ -166,7 +285,19 @@ export default function FeaturesSection() {
               </div>
               <div className="wrapper-content-features">
                 <div className="wrapper-loop-text-feature">
-                  <div className="small-text secondary animation-loop">EVOLVING</div>
+                  <div
+                    className="small-text secondary animation-loop"
+                    aria-label={EVOLVING_TEXT}
+                  >
+                    <span className="sr-only">{EVOLVING_TEXT}</span>
+                    <span aria-hidden="true">
+                      {EVOLVING_TEXT.split("").map((char, index) => (
+                        <span key={`${char}-${index}`} className="features-loop-char">
+                          {char}
+                        </span>
+                      ))}
+                    </span>
+                  </div>
                 </div>
                 <div className="wrapper-counting">
                   <Image

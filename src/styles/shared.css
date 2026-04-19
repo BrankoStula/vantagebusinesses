@@ -83,7 +83,7 @@
 }
 
 .tracks.product {
-  height: 1200vh;
+  height: 900vh;
 }
 
 .tracks.lab {
@@ -191,25 +191,25 @@
 
 /* Scroll-trigger placeholder elements */
 .trigger-wrapper-v1 {
-  grid-column-gap: 100vh;
-  grid-row-gap: 100vh;
+  grid-column-gap: 70vh;
+  grid-row-gap: 70vh;
   flex-flow: column;
-  margin-top: 240vh;
+  margin-top: 180vh;
   display: flex;
   position: absolute;
 }
 
 .trigger-contrast {
   width: 2vw;
-  height: 90vh;
+  height: 70vh;
 }
 
 .trigger-contrast.v3 {
-  height: 110vh;
+  height: 90vh;
 }
 
 .trigger-contrast.v4 {
-  height: 200vh;
+  height: 150vh;
   margin-top: var(--gap--gap-8x);
 }
 
@@ -393,7 +393,7 @@
     display: block;
     position: fixed;
     top: 0%;
-    left: 100px;
+    left: 0px;
     right: 0%;
   }
 

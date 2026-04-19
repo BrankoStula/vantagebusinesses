@@ -73,31 +73,16 @@ export default function Footer() {
                     </div>
                   </div>
                 </div>
-                <div className="wrapper-made-by-footer">
-                  <div className="logo-footer">
-                    <a href="#hero" className="w-inline-block">
-                      <Image
-                        src="/images/Logo-Quantara.png"
-                        alt="Quantara logo"
-                        width={120}
-                        height={32}
-                      />
-                    </a>
-                  </div>
-                  <div className="wrapper-block-made-by">
-                    <div className="block-made-by">
-                      <div className="text-secondary">Quantara Made By</div>
-                      <a href="https://webflow.com/templates/designers/slidesignus-studio" className="w-inline-block">
-                        <div className="text-secondary _500">Slidesignus</div>
-                      </a>
-                    </div>
-                    <div className="block-made-by">
-                      <div className="text-secondary">Built with</div>
-                      <a href="https://nextjs.org" className="w-inline-block">
-                        <div className="text-secondary _500">Next.js</div>
-                      </a>
-                    </div>
-                  </div>
+                <div className="logo-footer">
+                  <a href="#hero" className="w-inline-block">
+                    <Image
+                      src="/logo.svg"
+                      alt="Vantage Business Solutions"
+                      width={120}
+                      height={32}
+                      className="footer-logo-image"
+                    />
+                  </a>
                 </div>
               </div>
             </div>

@@ -1,36 +1,17 @@
 /* ============================================================
-   WORKFLOW SECTION (FIXED SCROLL & SVG SIZES)
+   WORKFLOW SECTION
    ============================================================ */
 
-/* --- THE SCROLL FIX --- */
 .tracks.workflow {
-  position: relative; /* Acts as the absolute container for the triggers */
+  position: relative;
 }
 
-/* This pins the visual content to the screen while you scroll through the invisible triggers */
 .tracks.workflow .wrapper-sections {
   position: sticky;
   top: 0;
-  height: 100vh; /* Keeps it locked to viewport height */
+  height: 100vh;
   overflow: hidden;
 }
-
-/* This invisible box is 4 screens tall, creating the scrollable space */
-.trigger-wrapper-v3 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 400vh; /* 4 steps = 400vh total scroll depth */
-  z-index: -1;
-  pointer-events: none;
-}
-
-.trigger-workflow {
-  height: 100vh; /* Each step takes a full screen scroll to trigger */
-  width: 100%;
-}
-/* ----------------------- */
 
 .wrapper-workflow {
   height: 100%;
@@ -52,13 +33,55 @@
 }
 
 .wrapper-workflows.v2 {
-  background-image: url('/images/grid-bg.png');
+  background-image: url("/images/grid-bg.png");
   background-position: 30%;
   background-repeat: no-repeat;
   background-size: 115vw;
 }
 
+.bg-workflow {
+  pointer-events: none;
+  position: absolute;
+  inset: 0%;
+}
+
+.image-bg-workflow {
+  filter: saturate(156%) brightness(30%);
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0%;
+}
+
+.bg-overlay {
+  background-image:
+    linear-gradient(270deg, black, var(--color--transparent) 30%),
+    linear-gradient(0deg, black, var(--color--transparent) 10%),
+    linear-gradient(180deg, black, var(--color--transparent) 35%),
+    repeating-radial-gradient(circle farthest-corner at 0% 50%, black, var(--color--transparent) 50%);
+  position: absolute;
+  inset: 0%;
+}
+
+.block-title-flow {
+  padding-top: var(--layout--content-left-right-padding);
+  padding-right: var(--layout--section-spacing-1-5x);
+  grid-column-gap: var(--gap--gap-1x);
+  grid-row-gap: var(--gap--gap-1x);
+  justify-content: flex-end;
+  align-items: center;
+  display: flex;
+  position: absolute;
+  inset: 0% 0% auto;
+}
+
+.block-title-workflow-animation {
+  display: flex;
+}
+
 .image-line {
+  width: auto;
   height: 100%;
   margin-left: var(--layout--gap-image-line);
   position: absolute;
@@ -85,48 +108,12 @@
   width: 20vw;
 }
 
-.block-title-flow {
-  padding-top: var(--layout--content-left-right-padding);
-  padding-right: var(--layout--section-spacing-1-5x);
-  grid-column-gap: var(--gap--gap-1x);
-  grid-row-gap: var(--gap--gap-1x);
-  justify-content: flex-end;
-  align-items: center;
-  display: flex;
-  position: absolute;
-  inset: 0% 0% auto;
-}
-
-.block-title-workflow-animation {
-  display: flex;
-}
-
-.image-bg-workflow {
-  filter: saturate(156%) brightness(30%);
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  object-fit: cover;
-}
-
-.bg-workflow {
-  position: absolute;
-  inset: 0%;
-}
-
-.bg-overlay {
-  background-image: linear-gradient(270deg, black, var(--color--transparent) 30%),
-    linear-gradient(0deg, black, var(--color--transparent) 10%),
-    linear-gradient(180deg, black, var(--color--transparent) 35%),
-    repeating-radial-gradient(circle farthest-corner at 0% 50%, black, var(--color--transparent) 50%);
-  position: absolute;
-  inset: 0%;
-}
-
 .block-card-workflow {
   justify-content: center;
   align-items: center;
+  height: 100%;
   display: flex;
+  transform: translateY(1.5vw);
 }
 
 .block-image-workflow {
@@ -135,14 +122,31 @@
   align-items: center;
   width: 14vw;
   display: flex;
-  position: relative; /* Crucial for absolutely positioning the icon inside */
+  position: relative;
+  will-change: transform, opacity;
 }
 
-/* 3D Stacking */
-.block-image-workflow.v1 { z-index: 4; margin-top: 10vw; }
-.block-image-workflow.v2 { z-index: 3; margin-left: -5vw; }
-.block-image-workflow.v3 { z-index: 2; margin-top: -10vw; margin-left: -5vw; }
-.block-image-workflow.v4 { z-index: 1; margin-top: -20vw; margin-left: -5vw; }
+.block-image-workflow.v1 {
+  z-index: 4;
+  margin-top: var(--miscellaneous--margin-10x);
+}
+
+.block-image-workflow.v2 {
+  z-index: 3;
+  margin-left: var(--miscellaneous--padding-overflow-block-product);
+}
+
+.block-image-workflow.v3 {
+  z-index: 2;
+  margin-top: var(--miscellaneous--overflow-margin-10x);
+  margin-left: var(--miscellaneous--padding-overflow-block-product);
+}
+
+.block-image-workflow.v4 {
+  z-index: 1;
+  margin-top: var(--miscellaneous--overflow-margin-20x);
+  margin-left: var(--miscellaneous--padding-overflow-block-product);
+}
 
 .extrude-workflow-img {
   width: 100%;
@@ -150,24 +154,89 @@
   display: block;
 }
 
-/* --- THE SVG SIZE & POSITION FIX --- */
-/* --- THE SVG SIZE & POSITION FIX --- */
-.icon-workflow-wrapper {
+.icon-workflow {
+  width: 10vw;
+  height: auto;
+  margin-top: var(--layout--padding-top-icon-workflow);
+  margin-right: var(--layout--padding-right-icon-workflow);
+  filter: brightness(100%) contrast(100%);
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  translate: -40px 10px;
-  transition: filter 0.4s ease;
-  z-index: 5;
+  will-change: transform, filter;
 }
 
-.icon-workflow-svg {
-  width: 70%; /* Controls how much of the 3D block the icon covers */
-  height: auto;
-  display: block;
+.trigger-wrapper-v3 {
+  top: 0;
+  left: 0;
+  grid-column-gap: 200vh;
+  grid-row-gap: 200vh;
+  flex-flow: column;
+  width: 2vw;
+  display: flex;
+  pointer-events: none;
+  position: absolute;
+}
+
+.trigger-workflow {
+  width: 2vw;
+  height: 100vh;
+}
+
+.trigger-workflow.v1 {
+  transition: all 0.5s;
+}
+
+@media screen and (max-width: 767px) {
+  .wrapper-workflow {
+    flex-flow: column-reverse;
+  }
+
+  .wrapper-workflows.v2 {
+    padding-left: var(--layout--no-space);
+    background-image: url("/images/grid-bg.png"), linear-gradient(180deg, black 80%, var(--color--transparent));
+    background-position: 50%, 0 0;
+    background-repeat: no-repeat, repeat;
+    background-size: 220vw, auto;
+  }
+
+  .image-line {
+    width: 3vw;
+    margin-left: var(--layout--gap-image-line);
+  }
+
+  .block-flow.v1,
+  .block-flow.v2,
+  .block-flow.v3,
+  .block-flow.v4 {
+    grid-column-gap: var(--miscellaneous--margin-left-title-about-us-v2);
+    grid-row-gap: var(--miscellaneous--margin-left-title-about-us-v2);
+  }
+
+  .block-content-flow {
+    grid-column-gap: var(--gap--gap-4x);
+    grid-row-gap: var(--gap--gap-4x);
+  }
+
+  .block-desc-content-flow {
+    width: 60vw;
+  }
+
+  .block-title-flow {
+    padding-right: var(--layout--container-spacing);
+  }
+
+  .bg-overlay {
+    background-image:
+      linear-gradient(270deg, black, var(--color--transparent) 30%),
+      linear-gradient(0deg, black, var(--color--transparent) 10%),
+      linear-gradient(180deg, black, var(--color--transparent) 35%),
+      repeating-radial-gradient(circle farthest-corner at 50% 100%, black, var(--color--transparent) 55%);
+  }
+
+  .block-image-workflow {
+    width: 24vw;
+  }
+
+  .icon-workflow {
+    width: 14vw;
+  }
 }
