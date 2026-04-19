@@ -4,12 +4,14 @@
 
 .wrapper-lab {
   height: 100%;
-  padding-top: var(--layout--section-spacing-1-5x);
-  padding-bottom: var(--layout--section-spacing-1-5x);
-  grid-column-gap: var(--gap--gap-6x);
-  grid-row-gap: var(--gap--gap-6x);
+  padding-top: var(--layout--section-spacing);
+  padding-bottom: var(--layout--section-spacing);
+  grid-column-gap: 1.5vw;
+  grid-row-gap: 1.5vw;
   flex-flow: column;
   display: flex;
+  position: relative;
+  overflow: hidden;
 }
 
 .block-title-lab {
@@ -39,25 +41,40 @@
   height: 3.8vw;
 }
 
+.lab-subtitle {
+  text-align: center;
+  max-width: 50vw;
+  margin: 0 auto;
+}
+
+.lab-card-desc {
+  margin-top: 0.3vw;
+  opacity: 0.6;
+  font-size: var(--text-typography--base-size);
+  line-height: var(--text-typography--base-height);
+}
+
 .block-content-lab {
-  grid-column-gap: var(--gap--gap-4x);
-  grid-row-gap: var(--gap--gap-4x);
+  grid-column-gap: var(--gap--gap-2x);
+  grid-row-gap: var(--gap--gap-2x);
   flex-flow: row;
   flex: 1;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
+  min-height: 0;
   display: flex;
 }
 
 .wrapper-content-lab {
-  grid-column-gap: var(--gap--gap-4x);
-  grid-row-gap: var(--gap--gap-4x);
+  grid-column-gap: 1.5vw;
+  grid-row-gap: 1.5vw;
   flex-flow: column;
   justify-content: center;
   align-items: flex-start;
   display: flex;
 }
 
+/* CARDS STRUCTURE & WIDTHS */
 .block-content-desc-lab {
   border: var(--border--border-width) solid var(--color--base-color);
   border-radius: var(--border--border-round);
@@ -69,30 +86,26 @@
   overflow: hidden;
 }
 
-.block-content-desc-lab.v2 {
-  width: 18vw;
-}
-
+.block-content-desc-lab.v2,
 .block-content-desc-lab.v3 {
   width: 24vw;
-  margin-left: var(--gap--gap-8x);
+  margin-left: 0;
 }
 
 .block-content-desc-lab.v4 {
-  width: 20vw;
+  width: 26vw;
+  flex: 1;
 }
 
 .block-content-desc-lab.v1 {
-  height: 30vw;
+  flex: 1;
 }
 
-.title-content-desc-lab {
-  padding: var(--layout--content-top-bottom-padding) var(--layout--content-top-bottom-padding) var(--layout--content-top-bottom-padding) var(--layout--content-left-right-padding);
-  background-color: var(--color--almost-black);
-}
+/* CARDS PADDING & SPACING */
+
 
 .content-desc-lab {
-  padding: var(--layout--content-left-right-padding) var(--layout--content-top-bottom-padding) var(--layout--content-top-bottom-padding);
+  padding: 1.5vw 2.5vw 2.5vw 2.5vw;
   grid-column-gap: var(--gap--gap-6x);
   grid-row-gap: var(--gap--gap-6x);
   flex-flow: column;
@@ -103,8 +116,9 @@
 }
 
 .content-desc-lab.v2 {
-  padding-top: var(--layout--content-top-bottom-padding);
-  padding-left: var(--layout--content-left-right-padding);
+  padding-top: 2vw;
+  padding-left: 2.5vw;
+  padding-right: 2.5vw;
   grid-column-gap: var(--gap--gap-4x);
   grid-row-gap: var(--gap--gap-4x);
   justify-content: center;
@@ -112,8 +126,9 @@
 }
 
 .content-desc-lab.v3 {
-  padding-top: var(--layout--content-top-bottom-padding);
-  padding-left: var(--layout--content-left-right-padding);
+  padding-top: 2vw;
+  padding-left: 2.5vw;
+  padding-right: 2.5vw;
   grid-column-gap: var(--border--border-round);
   grid-row-gap: var(--border--border-round);
   justify-content: flex-start;
@@ -121,19 +136,30 @@
 }
 
 .content-desc-lab.v4 {
-  padding: var(--layout--no-space);
+  padding: 2vw;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.image-content-lab.v2 {
-  width: 100%;
+.lab-cta {
+  display: flex;
+  justify-content: center;
 }
 
-.image-content-lab.v3 {
-  opacity: 0;
-  object-fit: cover;
+/* SVG STYLING */
+.svg-donut {
   width: 100%;
-  position: absolute;
+  height: auto;
+  display: block;
+}
+
+.svg-scatter {
+  width: 100%;
+  flex: 1;
+  display: block;
+  min-height: 0;
 }
 
 .content-desc-labs {
@@ -153,6 +179,7 @@
   padding-top: var(--layout--button-even-padding);
 }
 
+/* ANIMATION SCANNER BLOCKS */
 .block-scan-lab {
   width: 100vw;
   height: 100vh;
@@ -186,8 +213,9 @@
   position: relative;
 }
 
+/* IMAGE CONTAINERS */
 .block-image-lab {
-  width: 10vw;
+  width: 16vw; 
   position: relative;
 }
 
@@ -209,7 +237,7 @@
   position: relative;
 }
 
-/* Responsive */
+/* Responsive Breakpoints */
 @media screen and (max-width: 991px) {
   .block-content-lab {
     flex-flow: column;
@@ -219,12 +247,11 @@
     flex-flow: row;
   }
 
-  .block-content-desc-lab.v2 {
-    width: 26vw;
-  }
-
+  .block-content-desc-lab,
+  .block-content-desc-lab.v2,
+  .block-content-desc-lab.v3,
   .block-content-desc-lab.v4 {
-    width: 30vw;
+    width: 32vw;
   }
 
   .content-desc-lab {
@@ -233,30 +260,20 @@
   }
 
   .block-image-lab {
-    width: 14vw;
-  }
-
-  .wraper-block-image-lab {
-    width: 50%;
+    width: 18vw;
   }
 }
 
 @media screen and (max-width: 767px) {
-  .block-content-desc-lab.v2 {
-    width: 35vw;
-  }
-
-  .block-content-desc-lab.v3 {
-    width: 32vw;
-  }
-
+  .block-content-desc-lab,
+  .block-content-desc-lab.v2,
+  .block-content-desc-lab.v3,
   .block-content-desc-lab.v4 {
-    width: 34vw;
+    width: 40vw;
   }
 
   .block-content-desc-lab.v1 {
-    width: 40vw;
-    height: 34vw;
+    width: 44vw;
   }
 }
 
@@ -264,8 +281,8 @@
   .wrapper-lab {
     padding-top: var(--layout--section-spacing);
     padding-bottom: var(--layout--section-spacing);
-    grid-column-gap: var(--gap--gap-8x);
-    grid-row-gap: var(--gap--gap-8x);
+    grid-column-gap: var(--gap--gap-4x);
+    grid-row-gap: var(--gap--gap-4x);
   }
 
   .block-title-lab {
@@ -274,8 +291,8 @@
   }
 
   .block-content-lab {
-    grid-column-gap: var(--gap--gap-8x);
-    grid-row-gap: var(--gap--gap-8x);
+    grid-column-gap: var(--gap--gap-4x);
+    grid-row-gap: var(--gap--gap-4x);
     justify-content: center;
     align-items: center;
   }
@@ -284,23 +301,17 @@
     flex-flow: column;
   }
 
-  .block-content-desc-lab.v2 {
-    width: 58vw;
-  }
-
-  .block-content-desc-lab.v3 {
-    width: 50vw;
-    margin-left: var(--layout--section-spacing-1-5x);
-  }
-
-  .block-content-desc-lab.v4 {
-    width: 60vw;
-    height: 100%;
+  .block-content-desc-lab,
+  .block-content-desc-lab.v2,
+  .block-content-desc-lab.v3,
+  .block-content-desc-lab.v4,
+  .block-content-desc-lab.v1 {
+    width: 80vw;
+    margin-left: 0;
   }
 
   .block-content-desc-lab.v1 {
-    width: 60vw;
-    height: 45vw;
+    height: auto;
   }
 
   .content-desc-lab.v3 {
@@ -313,3 +324,4 @@
     grid-row-gap: var(--gap--gap-4x);
   }
 }
+

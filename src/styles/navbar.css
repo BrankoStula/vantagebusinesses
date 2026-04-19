@@ -42,7 +42,10 @@
 }
 
 .logo-navbar {
-  width: 8vw;
+  height: 32px !important; /* Locks the height perfectly to the navbar */
+  width: auto !important; /* Allows the width to scale naturally so it doesn't squish */
+  object-fit: contain;
+  display: block;
 }
 
 /* Responsive */
