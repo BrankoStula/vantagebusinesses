@@ -25,19 +25,19 @@ export default function CtaSection() {
     });
 
     // Animate Header
-    tl.fromTo(".cta-header-anim", 
-      { y: 30, opacity: 0 }, 
+    tl.fromTo(".cta-header-anim",
+      { y: 30, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power2.out" }
     );
-    
+
     // Slide in the Form (Left) and Info Card (Right)
-    tl.fromTo(".cta-split-left", 
-      { x: -30, opacity: 0 }, 
+    tl.fromTo(".cta-split-left",
+      { x: -30, opacity: 0 },
       { x: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
       "-=0.2"
     );
-    tl.fromTo(".cta-split-right", 
-      { x: 30, opacity: 0 }, 
+    tl.fromTo(".cta-split-right",
+      { x: 30, opacity: 0 },
       { x: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
       "-=0.4"
     );
@@ -62,7 +62,7 @@ export default function CtaSection() {
         </div>
 
         <div className="cta-split-layout">
-          
+
           {/* LEFT: Clean Form */}
           <div className="cta-split-left">
             <div className="cta-form-container">
@@ -76,7 +76,7 @@ export default function CtaSection() {
                 </div>
               ) : (
                 <form className="evaluation-form" onSubmit={handleSubmit}>
-                  
+
                   <div className="form-row">
                     <div className="form-group">
                       <label htmlFor="name" className="form-label">Full Name</label>
@@ -102,10 +102,10 @@ export default function CtaSection() {
                   {/* Textarea added to perfectly balance the height with the right card */}
                   <div className="form-group">
                     <label htmlFor="message" className="form-label">Current Operational Challenge</label>
-                    <textarea 
-                      id="message" 
-                      className="form-input form-textarea" 
-                      rows={3} 
+                    <textarea
+                      id="message"
+                      className="form-input form-textarea"
+                      rows={3}
                       placeholder="Briefly describe what feels broken or inefficient right now..."
                     ></textarea>
                   </div>
@@ -130,7 +130,7 @@ export default function CtaSection() {
                 <h3 className="info-title">Contact Us</h3>
                 <p className="info-subtitle">Prefer to reach out directly? Our team is available to assist you.</p>
               </div>
-              
+
               <ul className="contact-list">
                 <li>
                   <div className="contact-icon">
@@ -156,7 +156,7 @@ export default function CtaSection() {
                   </div>
                   <div className="contact-details">
                     <strong>Office</strong>
-                    <span>San Francisco, CA<br/>United States</span>
+                    <span>San Francisco, CA<br />United States</span>
                   </div>
                 </li>
               </ul>

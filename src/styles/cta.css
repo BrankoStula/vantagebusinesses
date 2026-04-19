@@ -18,6 +18,7 @@
   max-width: 100%;
   position: relative;
   padding: 6rem 2rem;
+  overflow-x: hidden;
 }
 
 .cta-wrapper {
@@ -42,6 +43,11 @@
   align-items: stretch;
 }
 
+.cta-split-left,
+.cta-split-right {
+  min-width: 0;
+}
+
 /* --- FORM & INFO CONTAINERS (GLASS & 12px RADIUS) --- */
 .cta-form-container,
 .info-card {
@@ -58,6 +64,7 @@
   display: flex;
   flex-direction: column;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  min-width: 0;
 }
 
 /* FORM FIELDS */
@@ -131,10 +138,41 @@
 .form-action-row > * {
   flex: 1;
   width: 100%;
+  min-width: 0;
   text-align: center;
   display: flex !important;
   justify-content: center;
   align-items: center;
+}
+
+.form-action-row .button-primary,
+.form-action-row .form-submit-btn {
+  min-height: clamp(3rem, 3.2vw, 3.35rem);
+}
+
+.form-action-row .button-primary {
+  align-self: stretch;
+}
+
+.form-action-row .button-primary .wrapper-button-primary {
+  width: 100%;
+  min-height: inherit;
+  padding: clamp(0.7rem, 0.9vw, 0.85rem) clamp(1.25rem, 1.8vw, 1.5rem);
+}
+
+.form-action-row .button-primary .wrapper-button-primary-text,
+.form-action-row .form-submit-btn {
+  font-size: clamp(0.9rem, 0.95vw, 1rem);
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+.form-action-row .button-primary .text-menu {
+  color: #002b4d;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  white-space: nowrap;
 }
 
 /* Secondary Button styling - reduced padding and font size to make it smaller */
@@ -143,9 +181,7 @@
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 100px; 
-  padding: 0.7rem 1.25rem; /* Reduced padding for a smaller, sleeker button */
-  font-size: 0.9rem; /* Slightly smaller text */
-  font-weight: 500;
+  padding: clamp(0.7rem, 0.9vw, 0.85rem) clamp(1.25rem, 1.8vw, 1.5rem);
   cursor: pointer;
   transition: all 0.3s ease;
   gap: 8px; 
@@ -202,6 +238,7 @@
   display: flex;
   align-items: flex-start;
   gap: 1.25rem;
+  min-width: 0;
 }
 
 .contact-icon {
@@ -233,6 +270,7 @@
   text-decoration: none;
   line-height: 1.4;
   transition: color 0.2s ease;
+  overflow-wrap: anywhere;
 }
 
 .contact-details a:hover {
@@ -270,8 +308,43 @@
 }
 
 @media screen and (max-width: 767px) {
+  .cta-text-content .medium-big-text {
+    white-space: normal;
+    text-wrap: balance;
+    max-width: 12ch;
+    margin-inline: auto;
+    font-size: clamp(1.45rem, 7vw, 1.9rem);
+    line-height: 1.08;
+  }
+
+  .cta-text-content .small-text {
+    max-width: min(100%, 32rem) !important;
+    padding-inline: 0.4rem;
+  }
+
   .form-row { flex-direction: column; gap: 1.5rem; }
   .cta-form-container { padding: 2rem 1.5rem; }
   .cta { padding: 4rem 1rem; }
   .form-action-row { flex-direction: column; align-items: stretch; }
+}
+
+@media screen and (max-width: 479px) {
+  .cta-wrapper {
+    width: 100%;
+  }
+
+  .cta-text-content .medium-big-text {
+    max-width: 10ch;
+    font-size: clamp(1.25rem, 7.5vw, 1.55rem);
+  }
+
+  .info-card,
+  .cta-form-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .contact-details a,
+  .contact-details span {
+    font-size: 1rem;
+  }
 }

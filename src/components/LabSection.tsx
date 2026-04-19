@@ -16,45 +16,45 @@ export default function LabSection() {
     const section = sectionRef.current;
     if (!section) return;
 
-    const q  = <T extends Element>(sel: string): T | null => section.querySelector<T>(sel);
-    const qa = <T extends Element>(sel: string): T[]      => gsap.utils.toArray<T>(sel, section);
+    const q = <T extends Element>(sel: string): T | null => section.querySelector<T>(sel);
+    const qa = <T extends Element>(sel: string): T[] => gsap.utils.toArray<T>(sel, section);
 
     // ── Elements ─────────────────────────────────────────────────────────
-    const descV1     = q<HTMLElement>(".block-content-desc-lab.v1");
-    const descV2     = q<HTMLElement>(".block-content-desc-lab.v2");
-    const descV3     = q<HTMLElement>(".block-content-desc-lab.v3");
-    const descV4     = q<HTMLElement>(".block-content-desc-lab.v4");
-    const labsV1     = q<HTMLElement>(".content-desc-labs.v1");
-    const labsV2     = qa<HTMLElement>(".content-desc-labs.v2");
-    const stV1       = qa<HTMLElement>(".small-text.animated-v1");
-    const stV2       = qa<HTMLElement>(".small-text.animated-v2");
-    const stV3       = qa<HTMLElement>(".small-text.animated-v3");
-    const stV4       = qa<HTMLElement>(".small-text.animated-v4");
-    const scanBlock  = q<HTMLElement>(".block-scan-lab");
-    const toggle     = q<HTMLElement>(".toggle");
-    const countV1    = q<HTMLElement>(".medium-text.animated-v1");
-    const countV2    = q<HTMLElement>(".medium-text.animated-v2");
-    const failedTxt  = q<HTMLElement>(".text-secondary.absolute");
+    const descV1 = q<HTMLElement>(".block-content-desc-lab.v1");
+    const descV2 = q<HTMLElement>(".block-content-desc-lab.v2");
+    const descV3 = q<HTMLElement>(".block-content-desc-lab.v3");
+    const descV4 = q<HTMLElement>(".block-content-desc-lab.v4");
+    const labsV1 = q<HTMLElement>(".content-desc-labs.v1");
+    const labsV2 = qa<HTMLElement>(".content-desc-labs.v2");
+    const stV1 = qa<HTMLElement>(".small-text.animated-v1");
+    const stV2 = qa<HTMLElement>(".small-text.animated-v2");
+    const stV3 = qa<HTMLElement>(".small-text.animated-v3");
+    const stV4 = qa<HTMLElement>(".small-text.animated-v4");
+    const scanBlock = q<HTMLElement>(".block-scan-lab");
+    const toggle = q<HTMLElement>(".toggle");
+    const countV1 = q<HTMLElement>(".medium-text.animated-v1");
+    const countV2 = q<HTMLElement>(".medium-text.animated-v2");
+    const failedTxt = q<HTMLElement>(".text-secondary.absolute");
     const successTxt = q<HTMLElement>(".text-thirdly.opacity");
-    const badgeAnim  = q<HTMLElement>(".badge.animated");
+    const badgeAnim = q<HTMLElement>(".badge.animated");
     const scramblePL = qa<HTMLElement>(".scramble.v1.padding-left");
-    const trigV1El   = q<HTMLElement>(".trigger-lab.v1");
-    const trigV2El   = q<HTMLElement>(".trigger-lab.v2");
-    const trigV3El   = q<HTMLElement>(".trigger-lab.v3");
+    const trigV1El = q<HTMLElement>(".trigger-lab.v1");
+    const trigV2El = q<HTMLElement>(".trigger-lab.v2");
+    const trigV3El = q<HTMLElement>(".trigger-lab.v3");
 
     // ── SVG elements ──────────────────────────────────────────────────────
-    const pieSeg1    = q<Element>(".pie-seg.v1");
-    const pieSeg2    = q<Element>(".pie-seg.v2");
-    const pieSeg3    = q<Element>(".pie-seg.v3");
-    const pieSeg4    = q<Element>(".pie-seg.v4");
-    const trendLine  = q<Element>(".trend-line");
+    const pieSeg1 = q<Element>(".pie-seg.v1");
+    const pieSeg2 = q<Element>(".pie-seg.v2");
+    const pieSeg3 = q<Element>(".pie-seg.v3");
+    const pieSeg4 = q<Element>(".pie-seg.v4");
+    const trendLine = q<Element>(".trend-line");
     const scatterDots = qa<Element>(".scatter-dot");
 
     // ── Initial hidden states ─────────────────────────────────────────────
     [descV1, descV2, descV3, descV4].forEach(el => {
       if (el) gsap.set(el, { opacity: 0, y: "7vw", scale: 0.8 });
     });
-    if (labsV1)        gsap.set(labsV1, { scale: 0.8 });
+    if (labsV1) gsap.set(labsV1, { scale: 0.8 });
     if (labsV2.length) gsap.set(labsV2, { scale: 0.8 });
     [...stV1, ...stV2, ...stV3, ...stV4].forEach(el => gsap.set(el, { opacity: 0 }));
 
@@ -63,20 +63,20 @@ export default function LabSection() {
 
     // ── SplitText ─────────────────────────────────────────────────────────
     const operationsEl = q<HTMLElement>(".medium-big-text.animated-1");
-    const valuationEl  = q<HTMLElement>(".medium-big-text.muted.animated-2");
+    const valuationEl = q<HTMLElement>(".medium-big-text.muted.animated-2");
 
     const splitOperations = operationsEl ? new SplitText(operationsEl, { type: "chars" }) : null;
-    const splitValuation  = valuationEl  ? new SplitText(valuationEl,  { type: "chars" }) : null;
+    const splitValuation = valuationEl ? new SplitText(valuationEl, { type: "chars" }) : null;
     const operationsChars = splitOperations?.chars ?? [];
-    const valuationChars  = splitValuation?.chars  ?? [];
+    const valuationChars = splitValuation?.chars ?? [];
 
     // ── Timeline 1: Entrance — triggered by .trigger-lab.v1 ──────────────
     const t1 = gsap.timeline({ paused: true });
 
     if (operationsChars.length) {
       t1.to(operationsChars, { color: "hsla(0,0%,25.1%,1)", duration: 0.26, stagger: { amount: 0.5 }, ease: "none" }, 0)
-        .to(operationsChars, { color: "#229eff",             duration: 0.3,  stagger: { amount: 0.5 }, ease: "none" }, 0.26)
-        .to(operationsChars, { color: "#ffffff",             duration: 0.3,  stagger: { amount: 0.5 }, ease: "none" }, 0.66);
+        .to(operationsChars, { color: "#229eff", duration: 0.3, stagger: { amount: 0.5 }, ease: "none" }, 0.26)
+        .to(operationsChars, { color: "#ffffff", duration: 0.3, stagger: { amount: 0.5 }, ease: "none" }, 0.66);
     }
 
     if (descV1) t1.to(descV1, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "power1.out" }, 0.88);
@@ -97,9 +97,9 @@ export default function LabSection() {
       ScrollTrigger.create({
         trigger: trigV1El,
         start: "top bottom",
-        end:   "bottom top",
-        onEnter:     () => t1.play(),
-        onLeave:     () => { /* keep playing through */ },
+        end: "bottom top",
+        onEnter: () => t1.play(),
+        onLeave: () => { /* keep playing through */ },
         onEnterBack: () => t1.pause(),
         onLeaveBack: () => t1.pause(0),
       });
@@ -112,19 +112,19 @@ export default function LabSection() {
       t2.to(scanBlock, { x: "-100vw", ease: "none" }, 0);
       t2.to(scanBlock, { opacity: 0, duration: 0.2, ease: "none" }, 0.43);
     }
-    
+
     if (operationsChars.length) t2.to(operationsChars, { color: "#404040", duration: 0.3, ease: "none" }, 0.34);
     if (toggle) t2.to(toggle, { x: "100%", ease: "power2.out" }, 0.19);
 
     if (pieSeg3) t2.to(pieSeg3, { attr: { stroke: "#4db8ff", strokeWidth: "28" }, duration: 0.35, ease: "power1.out" }, 0.42);
-    if (pieSeg1) t2.to(pieSeg1, { attr: { stroke: "#1a4a7a" },                    duration: 0.35, ease: "power1.out" }, 0.42);
+    if (pieSeg1) t2.to(pieSeg1, { attr: { stroke: "#1a4a7a" }, duration: 0.35, ease: "power1.out" }, 0.42);
 
     if (countV1) t2.to(countV1, { y: "-300%", ease: "power2.out" }, 0.24);
     if (countV2) t2.to(countV2, { y: "-200%", ease: "power2.out" }, 0.24);
 
-    if (failedTxt)  t2.to(failedTxt,  { opacity: 0, duration: 0.2, ease: "none" }, 0.24);
+    if (failedTxt) t2.to(failedTxt, { opacity: 0, duration: 0.2, ease: "none" }, 0.24);
     if (successTxt) t2.to(successTxt, { opacity: 1, duration: 0.2, ease: "none" }, 0.24);
-    if (badgeAnim)  t2.to(badgeAnim,  { backgroundColor: "#002b4d", borderColor: "#229eff", duration: 1.5, ease: "none" }, 0.24);
+    if (badgeAnim) t2.to(badgeAnim, { backgroundColor: "#002b4d", borderColor: "#229eff", duration: 1.5, ease: "none" }, 0.24);
 
     // Scatter Plot Animation: Pop dots in, then smoothly draw the trendline
     if (scatterDots.length) t2.to(scatterDots, { scale: 1, attr: { fill: "#229eff" }, stagger: 0.04, duration: 0.4, ease: "back.out(1.5)" }, 0.13);
@@ -136,9 +136,9 @@ export default function LabSection() {
       ScrollTrigger.create({
         trigger: trigV2El,
         start: "top bottom",
-        end:   "bottom top",
-        onEnter:     () => t2.play(),
-        onLeave:     () => t2.pause(),
+        end: "bottom top",
+        onEnter: () => t2.play(),
+        onLeave: () => t2.pause(),
         onEnterBack: () => t2.play(),
         onLeaveBack: () => t2.reverse(),
       });
@@ -164,9 +164,9 @@ export default function LabSection() {
       ScrollTrigger.create({
         trigger: trigV3El,
         start: "top+=20% bottom",
-        end:   "bottom top",
-        onEnter:     () => t3.play(0),
-        onLeave:     () => { t3.pause(); t3.seek(0); },
+        end: "bottom top",
+        onEnter: () => t3.play(0),
+        onLeave: () => { t3.pause(); t3.seek(0); },
         onEnterBack: () => t3.pause(0),
         onLeaveBack: () => t3.pause(0),
       });
@@ -195,11 +195,11 @@ export default function LabSection() {
                   <div className="medium-big-text muted animated-2">Valuation</div>
                 </div>
 
-                <div className="lab-subtitle">
+                {/* <div className="lab-subtitle">
                   <p className="small-text text-secondary" style={{ marginBottom: "2rem" }}>
                     Two companies can generate the same revenue but be valued completely differently. The difference comes down to structure, efficiency, and systems.
                   </p>
-                </div>
+                </div> */}
 
                 <div className="block-content-lab">
 
@@ -217,7 +217,7 @@ export default function LabSection() {
                             <circle cx="100" cy="100" r="70" fill="none" stroke="#1c1c1c" strokeWidth="26" />
                             <g transform="rotate(-90 100 100)">
                               <circle cx="100" cy="100" r="70" fill="none" stroke="#002b4d" strokeWidth="22"
-                                strokeDasharray="100 340" strokeDashoffset="0"   className="pie-seg v1" />
+                                strokeDasharray="100 340" strokeDashoffset="0" className="pie-seg v1" />
                               <circle cx="100" cy="100" r="70" fill="none" stroke="#003d6e" strokeWidth="22"
                                 strokeDasharray="100 340" strokeDashoffset="-110" className="pie-seg v2" />
                               <circle cx="100" cy="100" r="70" fill="none" stroke="#229eff" strokeWidth="22"
@@ -247,11 +247,13 @@ export default function LabSection() {
                   {/* Cards 2 + 3 — Owner Independence & System Scalability */}
                   <div className="wrapper-content-lab">
                     <div className="block-content-desc-lab v2">
-                      <div className="title-content-desc-lab">
-                        <div className="small-text animated-v2">Owner Independence</div>
-                        <div className="small-text text-secondary lab-card-desc">Reducing reliance on the founder to build a scalable, exit-ready asset.</div>
-                      </div>
                       <div className="content-desc-lab v2">
+                        <div className="lab-card-copy">
+                          <div className="small-text animated-v2">Owner Independence</div>
+                          <div className="small-text text-secondary lab-card-desc compact">
+                            Reducing reliance on the founder to build a scalable, exit-ready asset.
+                          </div>
+                        </div>
                         <div className="content-desc-labs v1">
                           <div className="number-counting">
                             <div className="medium-text animated-v1">2<br />3<br />4<br />5</div>
@@ -265,11 +267,13 @@ export default function LabSection() {
                     </div>
 
                     <div className="block-content-desc-lab v3">
-                      <div className="title-content-desc-lab">
-                        <div className="small-text animated-v3">System Scalability</div>
-                        <div className="small-text text-secondary lab-card-desc">Replacing single points of failure with structured, automated processes.</div>
-                      </div>
                       <div className="content-desc-lab v3">
+                        <div className="lab-card-copy">
+                          <div className="small-text animated-v3">System Scalability</div>
+                          <div className="small-text text-secondary lab-card-desc compact">
+                            Replacing single points of failure with structured, automated processes.
+                          </div>
+                        </div>
                         <div className="content-desc-labs v2">
                           <div className="small-text animated-v3">Reporting</div>
                           <div className="badge secondary">
@@ -307,24 +311,24 @@ export default function LabSection() {
                       </div>
                       {/* Redesigned Scatter Plot SVG */}
                       <div className="content-desc-lab v4">
-                        <svg viewBox="0 0 300 200" className="svg-scatter" aria-hidden="true" style={{ width: '100%', height: '100%' }}>
+                        <svg viewBox="0 0 300 200" className="svg-scatter" aria-hidden="true">
                           {/* Background Grid Lines for a technical/financial feel */}
                           <path d="M 0 40 L 300 40 M 0 80 L 300 80 M 0 120 L 300 120 M 0 160 L 300 160" stroke="#1a1a1a" strokeWidth="1" strokeDasharray="4 4" />
-                          
+
                           {/* Axes */}
                           <path d="M 20 180 L 280 180" stroke="#333" strokeWidth="2" />
                           <path d="M 20 20 L 20 180" stroke="#333" strokeWidth="2" />
-                          
+
                           {/* Data Dots — Plotted to show clear upward growth */}
-                          <circle cx="50"  cy="150" r="5" fill="#1a4a7a" className="scatter-dot" />
-                          <circle cx="80"  cy="140" r="5" fill="#1a4a7a" className="scatter-dot" />
+                          <circle cx="50" cy="150" r="5" fill="#1a4a7a" className="scatter-dot" />
+                          <circle cx="80" cy="140" r="5" fill="#1a4a7a" className="scatter-dot" />
                           <circle cx="110" cy="120" r="5" fill="#1a4a7a" className="scatter-dot" />
                           <circle cx="140" cy="125" r="5" fill="#1a4a7a" className="scatter-dot" />
-                          <circle cx="170" cy="95"  r="5" fill="#1a4a7a" className="scatter-dot" />
-                          <circle cx="200" cy="80"  r="5" fill="#1a4a7a" className="scatter-dot" />
-                          <circle cx="230" cy="65"  r="5" fill="#1a4a7a" className="scatter-dot" />
-                          <circle cx="260" cy="40"  r="5" fill="#1a4a7a" className="scatter-dot" />
-                          
+                          <circle cx="170" cy="95" r="5" fill="#1a4a7a" className="scatter-dot" />
+                          <circle cx="200" cy="80" r="5" fill="#1a4a7a" className="scatter-dot" />
+                          <circle cx="230" cy="65" r="5" fill="#1a4a7a" className="scatter-dot" />
+                          <circle cx="260" cy="40" r="5" fill="#1a4a7a" className="scatter-dot" />
+
                           {/* Animated Trend Line */}
                           <line
                             x1="30" y1="165" x2="275" y2="25"
