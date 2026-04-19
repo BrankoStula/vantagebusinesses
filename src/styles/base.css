@@ -1,0 +1,529 @@
+/* ============================================================
+   BASE — CSS custom properties, layout containers, HTML resets
+   ============================================================ */
+
+:root {
+  --color--black: #000;
+  --font-type--primary-font: "Inter Tight", sans-serif;
+  --color--white: #fff;
+  --text-typography--base-size: 1vw;
+  --text-typography--base-height: 1.5vw;
+  --font-weight--300: 300;
+  --text-typography--text-letter-spacing: .02vw;
+  --layout--no-space: 0px;
+  --heading--h1-size: 10vw;
+  --heading--h1-height: 8vw;
+  --font-weight--400: 400;
+  --heading--h2-size: 6vw;
+  --heading--h2-height: 6vw;
+  --heading--h3-size: 4vw;
+  --heading--h3-height: 4.5vw;
+  --heading--h4-size: 2.5vw;
+  --heading--h4-height: 3vw;
+  --heading--h5-size: 2vw;
+  --heading--h5-height: 2.5vw;
+  --heading--h6-size: 1.7vw;
+  --heading--h6-height: 1.7vw;
+  --text-typography--paragraph-size: 1.5vw;
+  --text-typography--paragraph-height: 2vw;
+  --color--gray: #9f9f9f;
+  --font-weight--500: 500;
+  --color--transparent: #3330;
+  --layout--section-spacing-1-5x: 7vw;
+  --layout--section-spacing-2x: 10vw;
+  --miscellaneous--main-button-y: 1.5vw;
+  --miscellaneous--main-button-x: 2vw;
+  --color--dark-gray: #5d5d5d;
+  --gap--gap-4x: 4vw;
+  --text-typography--medium-text-size: 2.5vw;
+  --text-typography--medium-text-height: 3vw;
+  --font-weight--200: 200;
+  --layout--padding-top-icon-workflow: 2vw;
+  --gap--gap-2x: 2vw;
+  --border--border-width: .1vw;
+  --color--black-gray: #181818;
+  --color--dark-blue: #002b4d;
+  --color--red-secondary: #ff030340;
+  --color--red: red;
+  --color--blue: #229eff;
+  --color--light-gray: #d1d1d1;
+  --color--whitesmoke: #f5f5f5;
+  --color--almost-black-2: #161616;
+  --color--almost-black: #0e0e0e;
+  --color--base-color: #333;
+  --layout--button-even-padding: 2vw;
+  --font-type--secondary-font: "IBM Plex Mono", sans-serif;
+  --gap--gap-8x: 8vw;
+  --layout--container-spacing: 3.4vw;
+  --text-typography--404-size: 14vw;
+  --text-typography--404-height: 12vw;
+  --text-typography--medium-big-text-size: 4vw;
+  --text-typography--medium-big-text-height: 4.5vw;
+  --miscellaneous--margin-left-title-about-us-v1: 14vw;
+  --layout--section-spacing: 2.4vw;
+  --layout--content-top-bottom-padding: .75vw;
+  --layout--content-left-right-padding: 1.6vw;
+  --border--border-rounded: 999vw;
+  --text-typography--hero-size: 5vw;
+  --text-typography--hero-height: 5.5vw;
+  --gap--gap-1x: 1vw;
+  --miscellaneous--padding-sub-content: 1vw;
+  --miscellaneous--overflow-1: -1vw;
+  --miscellaneous--padding-top-wrap-block-product: 3.8vw;
+  --miscellaneous--padding-overflow-block-product: -6vw;
+  --layout--padding-icon-product: .8vw;
+  --gap--gap-0-5x: .5vw;
+  --gap--gap-20x: 20vw;
+  --miscellaneous--overflow-orbit: -35vw;
+  --border--border-round: .5vw;
+  --miscellaneous--overflow-margin-10x: -10vw;
+  --miscellaneous--overflow-margin-20x: -20vw;
+  --text-typography--size-big-text: 12vw;
+  --gap--gap-6x: 6vw;
+  --layout--top-bottom-pading-badge: .4vw;
+  --layout--left-right-padding-badge: .6vw;
+  --miscellaneous--overflow-full-width: 100vw;
+  --layout--gap-image-line: 7vw;
+  --miscellaneous--margin-left-title-about-us-v2: 11vw;
+  --miscellaneous--margin-10x: 10vw;
+  --layout--padding-right-icon-workflow: 3vw;
+  --text-typography--size-large-text: 6vw;
+  --text-typography--height-large-text: 5vw;
+  --border--border-radius-2x: 2vw;
+  --layout--top-bottom-padding-button: .5vw;
+  --layout--left-right-padding-contact-us: 1.2vw;
+}
+
+/* Webflow layout containers */
+.w-layout-blockcontainer {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.w-layout-vflex {
+  flex-direction: column;
+  align-items: flex-start;
+  display: flex;
+}
+
+.w-layout-hflex {
+  flex-direction: row;
+  align-items: flex-start;
+  display: flex;
+}
+
+/* HTML element resets */
+body {
+  background-color: var(--color--black);
+  font-family: var(--font-type--primary-font);
+  color: var(--color--white);
+  font-size: var(--text-typography--base-size);
+  line-height: var(--text-typography--base-height);
+  font-weight: var(--font-weight--300);
+  letter-spacing: var(--text-typography--text-letter-spacing);
+}
+
+h1 {
+  margin-top: var(--layout--no-space);
+  margin-bottom: var(--layout--no-space);
+  font-family: var(--font-type--primary-font);
+  font-size: var(--heading--h1-size);
+  line-height: var(--heading--h1-height);
+  font-weight: var(--font-weight--400);
+}
+
+h2 {
+  margin-top: var(--layout--no-space);
+  margin-bottom: var(--layout--no-space);
+  font-family: var(--font-type--primary-font);
+  font-size: var(--heading--h2-size);
+  line-height: var(--heading--h2-height);
+  font-weight: var(--font-weight--400);
+}
+
+h3 {
+  margin-top: var(--layout--no-space);
+  margin-bottom: var(--layout--no-space);
+  font-family: var(--font-type--primary-font);
+  font-size: var(--heading--h3-size);
+  line-height: var(--heading--h3-height);
+  font-weight: var(--font-weight--400);
+}
+
+h4 {
+  margin-top: var(--layout--no-space);
+  margin-bottom: var(--layout--no-space);
+  font-family: var(--font-type--primary-font);
+  font-size: var(--heading--h4-size);
+  line-height: var(--heading--h4-height);
+  font-weight: var(--font-weight--400);
+}
+
+h5 {
+  margin-top: var(--layout--no-space);
+  margin-bottom: var(--layout--no-space);
+  font-family: var(--font-type--primary-font);
+  font-size: var(--heading--h5-size);
+  line-height: var(--heading--h5-height);
+  font-weight: var(--font-weight--400);
+}
+
+h6 {
+  margin-top: var(--layout--no-space);
+  margin-bottom: var(--layout--no-space);
+  font-family: var(--font-type--primary-font);
+  font-size: var(--heading--h6-size);
+  line-height: var(--heading--h6-height);
+  font-weight: var(--font-weight--400);
+}
+
+p {
+  margin-bottom: var(--layout--no-space);
+  font-family: var(--font-type--primary-font);
+  font-size: var(--text-typography--paragraph-size);
+  line-height: var(--text-typography--paragraph-height);
+  font-weight: var(--font-weight--300);
+}
+
+a {
+  color: var(--color--white);
+  text-decoration: none;
+}
+
+ul {
+  font-family: var(--font-type--primary-font);
+  color: var(--color--gray);
+  font-size: var(--text-typography--base-size);
+  line-height: var(--text-typography--base-height);
+  font-weight: var(--font-weight--300);
+}
+
+ol {
+  font-family: var(--font-type--primary-font);
+  font-size: var(--text-typography--paragraph-size);
+  line-height: var(--text-typography--paragraph-height);
+  font-weight: var(--font-weight--500);
+}
+
+img {
+  max-width: 100%;
+  display: inline-block;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+blockquote {
+  font-family: var(--font-type--primary-font);
+  font-size: var(--text-typography--paragraph-size);
+  line-height: var(--text-typography--paragraph-height);
+  font-weight: var(--font-weight--500);
+  border-left: 5px solid #e2e2e2;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+}
+
+figure {
+  margin-bottom: 10px;
+}
+
+/* ============================================================
+   RESPONSIVE — :root token overrides only
+   ============================================================ */
+
+@media screen and (max-width: 991px) {
+  .w-layout-blockcontainer {
+    max-width: 728px;
+  }
+
+  body {
+    --color--black: #000;
+    --font-type--primary-font: "Inter Tight", sans-serif;
+    --color--white: #fff;
+    --text-typography--base-size: .7rem;
+    --text-typography--base-height: 1.2rem;
+    --font-weight--300: 300;
+    --text-typography--text-letter-spacing: .02vw;
+    --layout--no-space: 0px;
+    --heading--h1-size: 10vw;
+    --heading--h1-height: 8vw;
+    --font-weight--400: 400;
+    --heading--h2-size: 6vw;
+    --heading--h2-height: 6vw;
+    --heading--h3-size: 4vw;
+    --heading--h3-height: 4.5vw;
+    --heading--h4-size: 2.5vw;
+    --heading--h4-height: 3vw;
+    --heading--h5-size: 2vw;
+    --heading--h5-height: 2.5vw;
+    --heading--h6-size: 1.7vw;
+    --heading--h6-height: 1.7vw;
+    --text-typography--paragraph-size: 1rem;
+    --text-typography--paragraph-height: 1.5rem;
+    --color--gray: #9f9f9f;
+    --font-weight--500: 500;
+    --color--transparent: #3330;
+    --layout--section-spacing-1-5x: 7vw;
+    --layout--section-spacing-2x: 10vw;
+    --miscellaneous--main-button-y: 1.5vw;
+    --miscellaneous--main-button-x: 2vw;
+    --color--dark-gray: #5d5d5d;
+    --gap--gap-4x: 4vw;
+    --text-typography--medium-text-size: 3vw;
+    --text-typography--medium-text-height: 3.5vw;
+    --font-weight--200: 200;
+    --layout--padding-top-icon-workflow: 2vw;
+    --gap--gap-2x: 2vw;
+    --border--border-width: .1vw;
+    --color--black-gray: #181818;
+    --color--dark-blue: #002b4d;
+    --color--red-secondary: #ff030340;
+    --color--red: red;
+    --color--blue: #229eff;
+    --color--light-gray: #d1d1d1;
+    --color--whitesmoke: #f5f5f5;
+    --color--almost-black-2: #161616;
+    --color--almost-black: #0e0e0e;
+    --color--base-color: #333;
+    --layout--button-even-padding: 2vw;
+    --font-type--secondary-font: "IBM Plex Mono", sans-serif;
+    --gap--gap-8x: 8vw;
+    --layout--container-spacing: 1.5rem;
+    --text-typography--404-size: 14vw;
+    --text-typography--404-height: 12vw;
+    --text-typography--medium-big-text-size: 5vw;
+    --text-typography--medium-big-text-height: 5.5vw;
+    --miscellaneous--margin-left-title-about-us-v1: 10vw;
+    --layout--section-spacing: 4.2vw;
+    --layout--content-top-bottom-padding: .75vw;
+    --layout--content-left-right-padding: 1.6vw;
+    --border--border-rounded: 999vw;
+    --text-typography--hero-size: 5vw;
+    --text-typography--hero-height: 5.5vw;
+    --gap--gap-1x: 1vw;
+    --miscellaneous--padding-sub-content: 1vw;
+    --miscellaneous--overflow-1: -1vw;
+    --miscellaneous--padding-top-wrap-block-product: 3.8vw;
+    --miscellaneous--padding-overflow-block-product: -7vw;
+    --layout--padding-icon-product: 1.2vw;
+    --gap--gap-0-5x: .5vw;
+    --gap--gap-20x: 20vw;
+    --miscellaneous--overflow-orbit: -35vw;
+    --border--border-round: .5vw;
+    --miscellaneous--overflow-margin-10x: -10vw;
+    --miscellaneous--overflow-margin-20x: -20vw;
+    --text-typography--size-big-text: 12vw;
+    --gap--gap-6x: 6vw;
+    --layout--top-bottom-pading-badge: .4vw;
+    --layout--left-right-padding-badge: .6vw;
+    --miscellaneous--overflow-full-width: 100vw;
+    --layout--gap-image-line: 7vw;
+    --miscellaneous--margin-left-title-about-us-v2: 4vw;
+    --miscellaneous--margin-10x: 10vw;
+    --layout--padding-right-icon-workflow: 3vw;
+    --text-typography--size-large-text: 6vw;
+    --text-typography--height-large-text: 5vw;
+    --border--border-radius-2x: 2vw;
+    --layout--top-bottom-padding-button: .5vw;
+    --layout--left-right-padding-contact-us: 1.2vw;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .w-layout-blockcontainer {
+    max-width: none;
+  }
+
+  body {
+    --color--black: #000;
+    --font-type--primary-font: "Inter Tight", sans-serif;
+    --color--white: #fff;
+    --text-typography--base-size: .6rem;
+    --text-typography--base-height: 1.1rem;
+    --font-weight--300: 300;
+    --text-typography--text-letter-spacing: .02vw;
+    --layout--no-space: 0px;
+    --heading--h1-size: 10vw;
+    --heading--h1-height: 8vw;
+    --font-weight--400: 400;
+    --heading--h2-size: 6vw;
+    --heading--h2-height: 6vw;
+    --heading--h3-size: 4vw;
+    --heading--h3-height: 4.5vw;
+    --heading--h4-size: 2.5vw;
+    --heading--h4-height: 3vw;
+    --heading--h5-size: 2vw;
+    --heading--h5-height: 2.5vw;
+    --heading--h6-size: 1.7vw;
+    --heading--h6-height: 1.7vw;
+    --text-typography--paragraph-size: .6rem;
+    --text-typography--paragraph-height: 1.1rem;
+    --color--gray: #9f9f9f;
+    --font-weight--500: 500;
+    --color--transparent: #3330;
+    --layout--section-spacing-1-5x: 6rem;
+    --layout--section-spacing-2x: 10vw;
+    --miscellaneous--main-button-y: 1rem;
+    --miscellaneous--main-button-x: 2rem;
+    --color--dark-gray: #5d5d5d;
+    --gap--gap-4x: 4vw;
+    --text-typography--medium-text-size: 1.5rem;
+    --text-typography--medium-text-height: 2rem;
+    --font-weight--200: 200;
+    --layout--padding-top-icon-workflow: 2vw;
+    --gap--gap-2x: 1.2rem;
+    --border--border-width: .1vw;
+    --color--black-gray: #181818;
+    --color--dark-blue: #002b4d;
+    --color--red-secondary: #ff030340;
+    --color--red: red;
+    --color--blue: #229eff;
+    --color--light-gray: #d1d1d1;
+    --color--whitesmoke: #f5f5f5;
+    --color--almost-black-2: #161616;
+    --color--almost-black: #0e0e0e;
+    --color--base-color: #333;
+    --layout--button-even-padding: 2vw;
+    --font-type--secondary-font: "IBM Plex Mono", sans-serif;
+    --gap--gap-8x: 8vw;
+    --layout--container-spacing: 1.5rem;
+    --text-typography--404-size: 9rem;
+    --text-typography--404-height: 7rem;
+    --text-typography--medium-big-text-size: 1.8rem;
+    --text-typography--medium-big-text-height: 2.3rem;
+    --miscellaneous--margin-left-title-about-us-v1: 14vw;
+    --layout--section-spacing: 3rem;
+    --layout--content-top-bottom-padding: 1.6vw;
+    --layout--content-left-right-padding: 3vw;
+    --border--border-rounded: 999vw;
+    --text-typography--hero-size: 5vw;
+    --text-typography--hero-height: 5.5vw;
+    --gap--gap-1x: 1vw;
+    --miscellaneous--padding-sub-content: 1vw;
+    --miscellaneous--overflow-1: -1vw;
+    --miscellaneous--padding-top-wrap-block-product: 3.8vw;
+    --miscellaneous--padding-overflow-block-product: -6vw;
+    --layout--padding-icon-product: .8vw;
+    --gap--gap-0-5x: .5vw;
+    --gap--gap-20x: 20vw;
+    --miscellaneous--overflow-orbit: -35vw;
+    --border--border-round: .5vw;
+    --miscellaneous--overflow-margin-10x: -10vw;
+    --miscellaneous--overflow-margin-20x: -20vw;
+    --text-typography--size-big-text: 12vw;
+    --gap--gap-6x: 6vw;
+    --layout--top-bottom-pading-badge: .4vw;
+    --layout--left-right-padding-badge: .6vw;
+    --miscellaneous--overflow-full-width: 100vw;
+    --layout--gap-image-line: 7vw;
+    --miscellaneous--margin-left-title-about-us-v2: 11vw;
+    --miscellaneous--margin-10x: 10vw;
+    --layout--padding-right-icon-workflow: 3vw;
+    --text-typography--size-large-text: 6vw;
+    --text-typography--height-large-text: 5vw;
+    --border--border-radius-2x: 2vw;
+    --layout--top-bottom-padding-button: .5vw;
+    --layout--left-right-padding-contact-us: 2.4vw;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  body {
+    --color--black: #000;
+    --font-type--primary-font: "Inter Tight", sans-serif;
+    --color--white: #fff;
+    --text-typography--base-size: .65rem;
+    --text-typography--base-height: 1.05rem;
+    --font-weight--300: 300;
+    --text-typography--text-letter-spacing: .02vw;
+    --layout--no-space: 0px;
+    --heading--h1-size: 10vw;
+    --heading--h1-height: 8vw;
+    --font-weight--400: 400;
+    --heading--h2-size: 6vw;
+    --heading--h2-height: 6vw;
+    --heading--h3-size: 4vw;
+    --heading--h3-height: 4.5vw;
+    --heading--h4-size: 2.5vw;
+    --heading--h4-height: 3vw;
+    --heading--h5-size: 2vw;
+    --heading--h5-height: 2.5vw;
+    --heading--h6-size: 1.7vw;
+    --heading--h6-height: 1.7vw;
+    --text-typography--paragraph-size: .85rem;
+    --text-typography--paragraph-height: 1.35rem;
+    --color--gray: #9f9f9f;
+    --font-weight--500: 500;
+    --color--transparent: #3330;
+    --layout--section-spacing-1-5x: 4.5rem;
+    --layout--section-spacing-2x: 20vw;
+    --miscellaneous--main-button-y: 1rem;
+    --miscellaneous--main-button-x: 2rem;
+    --color--dark-gray: #5d5d5d;
+    --gap--gap-4x: 4vw;
+    --text-typography--medium-text-size: 1.2rem;
+    --text-typography--medium-text-height: 1.7rem;
+    --font-weight--200: 200;
+    --layout--padding-top-icon-workflow: 2vw;
+    --gap--gap-2x: 1.2rem;
+    --border--border-width: .1vw;
+    --color--black-gray: #181818;
+    --color--dark-blue: #002b4d;
+    --color--red-secondary: #ff030340;
+    --color--red: red;
+    --color--blue: #229eff;
+    --color--light-gray: #d1d1d1;
+    --color--whitesmoke: #f5f5f5;
+    --color--almost-black-2: #161616;
+    --color--almost-black: #0e0e0e;
+    --color--base-color: #333;
+    --layout--button-even-padding: 2vw;
+    --font-type--secondary-font: "IBM Plex Mono", sans-serif;
+    --gap--gap-8x: 8vw;
+    --layout--container-spacing: 1rem;
+    --text-typography--404-size: 8rem;
+    --text-typography--404-height: 7rem;
+    --text-typography--medium-big-text-size: 1.5rem;
+    --text-typography--medium-big-text-height: 2rem;
+    --miscellaneous--margin-left-title-about-us-v1: 10vw;
+    --layout--section-spacing: 2rem;
+    --layout--content-top-bottom-padding: 2vw;
+    --layout--content-left-right-padding: 4vw;
+    --border--border-rounded: 999vw;
+    --text-typography--hero-size: 1.5rem;
+    --text-typography--hero-height: 1.8rem;
+    --gap--gap-1x: 1vw;
+    --miscellaneous--padding-sub-content: 2vw;
+    --miscellaneous--overflow-1: -1vw;
+    --miscellaneous--padding-top-wrap-block-product: 3.8vw;
+    --miscellaneous--padding-overflow-block-product: -9vw;
+    --layout--padding-icon-product: 2vw;
+    --gap--gap-0-5x: .5vw;
+    --gap--gap-20x: 20vw;
+    --miscellaneous--overflow-orbit: 0vw;
+    --border--border-round: .5vw;
+    --miscellaneous--overflow-margin-10x: -18vw;
+    --miscellaneous--overflow-margin-20x: -36vw;
+    --text-typography--size-big-text: 20vw;
+    --gap--gap-6x: 6vw;
+    --layout--top-bottom-pading-badge: .4vw;
+    --layout--left-right-padding-badge: .6vw;
+    --miscellaneous--overflow-full-width: 100vw;
+    --layout--gap-image-line: 12.5vw;
+    --miscellaneous--margin-left-title-about-us-v2: 11vw;
+    --miscellaneous--margin-10x: 18vw;
+    --layout--padding-right-icon-workflow: 5vw;
+    --text-typography--size-large-text: 2rem;
+    --text-typography--height-large-text: 2.5rem;
+    --border--border-radius-2x: 2vw;
+    --layout--top-bottom-padding-button: .5vw;
+    --layout--left-right-padding-contact-us: 3vw;
+  }
+}

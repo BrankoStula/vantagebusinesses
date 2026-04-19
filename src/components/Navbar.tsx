@@ -46,9 +46,10 @@ export default function Navbar() {
     <div className="navbar">
       <div className="wrapper-navbar logo">
         <a href="#hero" className="w-inline-block">
+          {/* UPDATED LOGO PATH AND ALT TEXT */}
           <Image
-            src="/images/Logo-Quantara-Light.png"
-            alt="Quantara"
+            src="/logo.svg"
+            alt="Vantage Business Solutions"
             width={120}
             height={32}
             className="logo-navbar"
@@ -97,7 +98,7 @@ export default function Navbar() {
               <div className="list-menu-info">
                 <div className="scramble">CONTACT</div>
                 <div className="wrapper-list-menu-info">
-                  <div className="medium-text">hello@quantara.ai</div>
+                  <div className="medium-text">hello@vantage.com</div>
                   <div className="medium-text">(+123) 678 89</div>
                 </div>
               </div>

@@ -1165,7 +1165,7 @@ figure {
 .icon-product {
   width: 7.5vw;
   margin-top: var(--layout--padding-icon-product);
-  filter: grayscale();
+  filter: grayscale(var(--icon-gray, 100%)) brightness(var(--icon-brightness, 100%)) contrast(var(--icon-contrast, 100%));
   position: absolute;
 }
 

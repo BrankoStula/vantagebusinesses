@@ -1,0 +1,208 @@
+/* ============================================================
+   TYPOGRAPHY — Text/font utility classes shared across sections
+   ============================================================ */
+
+.medium-text {
+  font-family: var(--font-type--primary-font);
+  font-size: var(--text-typography--medium-text-size);
+  line-height: var(--text-typography--medium-text-height);
+  font-weight: var(--font-weight--400);
+}
+
+.medium-text.anim-v1 {
+  font-weight: var(--font-weight--200);
+}
+
+.medium-text.anim-v2, .medium-text.anim-v3, .medium-text.anim-v4 {
+  font-weight: var(--font-weight--300);
+}
+
+.small-text {
+  font-family: var(--font-type--primary-font);
+  font-size: var(--text-typography--paragraph-size);
+  line-height: var(--text-typography--paragraph-height);
+  font-weight: var(--font-weight--300);
+}
+
+.small-text.secondary {
+  font-family: var(--font-type--secondary-font);
+}
+
+.small-text.align-right {
+  text-align: right;
+}
+
+.small-text.align-right.animation-v1 {
+  opacity: 0;
+  position: absolute;
+}
+
+.small-text.align-right.animation-v2 {
+  opacity: 0;
+}
+
+.small-text.align-right.animation-v3, .small-text.align-right.animation-v4 {
+  opacity: 0;
+  position: absolute;
+}
+
+.small-text.text-dark {
+  font-size: var(--text-typography--base-size);
+  line-height: var(--text-typography--base-height);
+}
+
+.small-text.text-secondary {
+  color: var(--color--dark-gray);
+}
+
+.medium-big-text {
+  font-family: var(--font-type--primary-font);
+  font-size: var(--text-typography--medium-big-text-size);
+  line-height: var(--text-typography--medium-big-text-height);
+  font-weight: var(--font-weight--400);
+  white-space: nowrap;
+}
+
+.medium-big-text.v2 {
+  margin-left: var(--miscellaneous--margin-left-title-about-us-v1);
+}
+
+.medium-big-text.color-gradient {
+  background-image: linear-gradient(325deg, var(--color--dark-gray), white);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.medium-big-text.color-gradient.animated-v1,
+.medium-big-text.color-gradient.animated-v2,
+.medium-big-text.color-gradient.animated-v3,
+.medium-big-text.color-gradient.animated-v4 {
+  opacity: 0;
+  position: absolute;
+}
+
+.medium-big-text.muted {
+  color: var(--color--dark-gray);
+}
+
+.medium-big-text.text-center {
+  text-align: center;
+}
+
+.large-text {
+  font-size: var(--text-typography--size-large-text);
+  line-height: var(--text-typography--height-large-text);
+  letter-spacing: var(--layout--no-space);
+}
+
+.big-text {
+  font-size: var(--text-typography--size-big-text);
+  line-height: var(--text-typography--size-big-text);
+  font-weight: var(--font-weight--200);
+}
+
+.text {
+  font-family: var(--font-type--secondary-font);
+  font-weight: var(--font-weight--400);
+  text-transform: uppercase;
+}
+
+.text-dark {
+  color: var(--color--black);
+}
+
+.text-secondary {
+  color: var(--color--gray);
+}
+
+.text-secondary.absolute {
+  color: var(--color--red);
+  position: absolute;
+}
+
+.text-secondary.menu {
+  color: var(--color--dark-gray);
+  font-size: var(--text-typography--paragraph-size);
+  line-height: var(--text-typography--paragraph-height);
+}
+
+.text-secondary.menu.v1 {
+  color: var(--color--white);
+  font-size: var(--text-typography--base-size);
+  line-height: var(--text-typography--base-height);
+}
+
+.text-secondary._500 {
+  color: var(--color--dark-gray);
+  font-weight: var(--font-weight--500);
+}
+
+.text-thirdly {
+  color: var(--color--blue);
+}
+
+.text-thirdly.opacity {
+  opacity: 0;
+}
+
+.text-menu {
+  color: var(--color--dark-blue);
+}
+
+.scramble {
+  font-family: var(--font-type--secondary-font);
+  color: var(--color--gray);
+  font-size: var(--text-typography--base-size);
+  line-height: var(--text-typography--base-height);
+}
+
+.scramble.v1.animated-v1,
+.scramble.v1.animated-v2,
+.scramble.v1.animated-v3,
+.scramble.v1.animated-v4 {
+  opacity: 0;
+  position: absolute;
+}
+
+.scramble.v1.padding-left {
+  padding-left: var(--miscellaneous--padding-sub-content);
+}
+
+.scramble.secondary {
+  color: var(--color--white);
+}
+
+.line {
+  height: var(--border--border-width);
+  background-color: var(--color--base-color);
+}
+
+/* Responsive */
+@media screen and (max-width: 991px) {
+  .small-text.align-right.animation-v1,
+  .small-text.align-right.animation-v2,
+  .small-text.align-right.animation-v3,
+  .small-text.align-right.animation-v4 {
+    text-align: left;
+  }
+
+  .scramble.v1 {
+    white-space: nowrap;
+  }
+
+  .scramble.v1.animated-v1 {
+    opacity: 100;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .small-text.text-dark {
+    font-size: var(--text-typography--base-size);
+    line-height: var(--text-typography--base-height);
+  }
+
+  .small-text.align-mobile {
+    text-align: center;
+  }
+}

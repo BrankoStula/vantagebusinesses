@@ -1,0 +1,72 @@
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+
+.navbar {
+  z-index: 999;
+  width: 100%;
+  padding-top: var(--layout--section-spacing);
+  grid-column-gap: 1vw;
+  grid-row-gap: 1vw;
+  flex-flow: row;
+  justify-content: center;
+  align-items: stretch;
+  display: flex;
+  position: absolute;
+}
+
+.wrapper-navbar {
+  padding: var(--layout--content-top-bottom-padding) var(--layout--content-top-bottom-padding) var(--layout--content-top-bottom-padding) var(--layout--content-left-right-padding);
+  grid-column-gap: 12vw;
+  grid-row-gap: 12vw;
+  border: var(--border--border-width) solid var(--color--black-gray);
+  border-radius: var(--border--border-rounded);
+  background-color: var(--color--almost-black);
+  background-image: linear-gradient(180deg, var(--color--almost-black-2), var(--color--almost-black) 21%);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  align-items: center;
+  display: flex;
+}
+
+.wrapper-navbar.logo {
+  padding-right: var(--layout--content-left-right-padding);
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper-link-navbar {
+  grid-column-gap: 2.5vw;
+  grid-row-gap: 2.5vw;
+  display: flex;
+}
+
+.logo-navbar {
+  height: 32px !important; /* Locks the height perfectly to the navbar */
+  width: auto !important; /* Allows the width to scale naturally so it doesn't squish */
+  object-fit: contain;
+  display: block;
+}
+
+/* Responsive */
+@media screen and (max-width: 479px) {
+  .navbar {
+    padding-right: var(--layout--container-spacing);
+    padding-left: var(--layout--container-spacing);
+    justify-content: space-between;
+    align-items: stretch;
+  }
+
+  .wrapper-navbar {
+    grid-column-gap: 0vw;
+    grid-row-gap: 0vw;
+  }
+
+  .wrapper-navbar.menu {
+    display: none;
+  }
+
+  .logo-navbar {
+    width: 24vw;
+  }
+}

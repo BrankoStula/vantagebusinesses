@@ -25,16 +25,18 @@ const DotLottieReact = dynamic(
 );
 
 const partners = [
-  { src: "/images/logo-1.png", alt: "Logoipsum partner logo 1" },
-  { src: "/images/logo-2.png", alt: "Logoipsum partner logo 2" },
-  { src: "/images/logo-3.png", alt: "Logoipsum partner logo 3" },
-  { src: "/images/logo-4.png", alt: "Logoipsum partner logo 4" },
-  { src: "/images/logo-5.png", alt: "Logoipsum partner logo 5" },
-  { src: "/images/logo-1.png", alt: "Logoipsum partner logo 1" },
-  { src: "/images/logo-2.png", alt: "Logoipsum partner logo 2" },
-  { src: "/images/logo-3.png", alt: "Logoipsum partner logo 3" },
-  { src: "/images/logo-4.png", alt: "Logoipsum partner logo 4" },
-  { src: "/images/logo-4.png", alt: "Logoipsum partner logo 4" },
+  { src: "/images/stripe-logo.svg", alt: "Stripe" },
+  { src: "/images/hubspot-logo.svg", alt: "HubSpot" },
+  { src: "/images/aws-logo.svg", alt: "AWS" },
+  { src: "/images/zapier-logo.svg", alt: "Zapier" },
+  { src: "/images/typescript-logo.svg", alt: "TypeScript" },
+  { src: "/images/quickbooks-logo.svg", alt: "QuickBooks" },
+  { src: "/images/stripe-logo.svg", alt: "Stripe" },
+  { src: "/images/hubspot-logo.svg", alt: "HubSpot" },
+  { src: "/images/aws-logo.svg", alt: "AWS" },
+  { src: "/images/zapier-logo.svg", alt: "Zapier" },
+  { src: "/images/typescript-logo.svg", alt: "TypeScript" },
+  { src: "/images/quickbooks-logo.svg", alt: "QuickBooks" },
 ];
 
 export default function EcosystemSection() {
@@ -46,19 +48,46 @@ export default function EcosystemSection() {
       if (!section) return;
 
       const wrapper = section.querySelector<HTMLElement>(".wrapper-partner");
+      const borderFill = section.querySelector<HTMLElement>(".border.fill");
+      const descText = section.querySelector<HTMLElement>(".small-text.animation");
+
+      // border + text animations run independently
+      if (borderFill) {
+        gsap.set(borderFill, { xPercent: -100 });
+        gsap.to(borderFill, {
+          xPercent: 100,
+          duration: 10,
+          ease: "none",
+          repeat: -1,
+        });
+      }
+
+      if (descText && wrapper) {
+        gsap.set(descText, { color: "var(--color--dark-gray, #333)" });
+        gsap.to(descText, {
+          color: "var(--color--white, #ffffff)",
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: wrapper,
+            start: "top 75%",
+            end: "top 35%",
+            scrub: 0.6,
+          },
+        });
+      }
+
       const partnerMove = section.querySelector<HTMLElement>(".block-partner-move");
       const partnerTrack = section.querySelector<HTMLElement>(".block-partners");
       const partnerRow = section.querySelector<HTMLElement>(".partner");
-      const borderFill = section.querySelector<HTMLElement>(".border.fill");
       const partnerCards = gsap.utils.toArray<HTMLElement>(".block-partner", section);
 
-      if (!wrapper || !partnerMove || !partnerTrack || !partnerRow || !borderFill || !partnerCards.length) {
+      if (!wrapper || !partnerMove || !partnerTrack || !partnerRow || !partnerCards.length) {
         return;
       }
 
       gsap.set(partnerTrack, { xPercent: 0 });
       gsap.set(partnerMove, { x: "0vw" });
-      gsap.set(borderFill, { xPercent: -100 });
       gsap.set(partnerCards, {
         scale: 1,
         filter: "brightness(100%) blur(0px)",
@@ -83,13 +112,6 @@ export default function EcosystemSection() {
         .to(partnerMove, { x: "0vw", ease: "none", duration: 0.1 })
         .to(partnerMove, { x: "-15vw", ease: "none", duration: 0.8 })
         .to(partnerMove, { x: "-15vw", ease: "none", duration: 0.1 });
-
-      gsap.to(borderFill, {
-        xPercent: 100,
-        duration: 10,
-        ease: "none",
-        repeat: -1,
-      });
 
       const hasHoverPointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
       if (!hasHoverPointer) return;
@@ -156,7 +178,7 @@ export default function EcosystemSection() {
         <div className="wrapper-partner">
           <div className="title-partner">
             <div className="block-title-partner v1">
-              <div className="small-text animation">Where Technology Meets Partnership</div>
+              <div className="small-text animation">Connecting the tools your team already relies on.</div>
             </div>
             <div className="block-title-partner v2">
               <div className="small-text secondary animation-loop">ECOSYSTEM</div>
@@ -183,7 +205,7 @@ export default function EcosystemSection() {
                         src={p.src}
                         alt={p.alt}
                         width={240}
-                        height={40}
+                        height={120}
                         className="logo-partner"
                       />
                     </a>
