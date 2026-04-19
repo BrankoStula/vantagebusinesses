@@ -1,0 +1,38 @@
+/* ============================================================
+   CTA SECTION
+   ============================================================ */
+
+.cta {
+  z-index: 2;
+  border-bottom-left-radius: var(--border--border-radius-2x);
+  border-bottom-right-radius: var(--border--border-radius-2x);
+  background-color: var(--color--black);
+  background-image: linear-gradient(to bottom, #0006, #0006),
+    radial-gradient(circle farthest-corner at 50% 0%, var(--color--transparent) 65%, var(--color--black)),
+    linear-gradient(180deg, black 25%, var(--color--transparent)),
+    url('/images/Abstract-Blue-Composition.webp');
+  background-position: 0 0, 0 0, 0 0, 50% 100%;
+  background-repeat: repeat, repeat, repeat, no-repeat;
+  background-size: auto, auto, auto, cover;
+  background-attachment: scroll, scroll, scroll, fixed;
+  max-width: 100%;
+  position: relative;
+}
+
+.cta-content {
+  padding-top: var(--layout--section-spacing-2x);
+  padding-bottom: var(--layout--section-spacing-2x);
+  grid-column-gap: var(--gap--gap-2x);
+  grid-row-gap: var(--gap--gap-2x);
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+/* Responsive */
+@media screen and (max-width: 479px) {
+  .cta {
+    height: 36vh;
+  }
+}

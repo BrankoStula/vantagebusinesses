@@ -1,0 +1,208 @@
+/* ============================================================
+   FOOTER SECTION
+   ============================================================ */
+
+.wrapper-footer {
+  flex-flow: column;
+  height: 85vh;
+  display: flex;
+  position: relative;
+}
+
+.block-footer {
+  z-index: 1;
+  height: 100%;
+  padding: var(--gap--gap-4x) var(--layout--container-spacing) var(--layout--section-spacing);
+  background-color: var(--color--white);
+  display: flex;
+}
+
+.block-content-footer {
+  flex-flow: column;
+  flex: 1;
+  display: flex;
+}
+
+.block-content-footer.v2 {
+  flex-flow: column;
+}
+
+.logo-footer {
+  aspect-ratio: auto;
+  object-fit: contain;
+  width: 48vw;
+}
+
+.wrapper-block-content-footer {
+  grid-column-gap: var(--gap--gap-6x);
+  grid-row-gap: var(--gap--gap-6x);
+  flex-flow: row;
+  flex: 1;
+  display: flex;
+}
+
+.block-content-footers {
+  flex-flow: column;
+  flex: 1;
+  display: flex;
+}
+
+.block-content-footers.v2 {
+  grid-column-gap: var(--gap--gap-4x);
+  grid-row-gap: var(--gap--gap-4x);
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.block-content-footers.v1 {
+  grid-column-gap: var(--gap--gap-8x);
+  grid-row-gap: var(--gap--gap-8x);
+  flex-flow: row;
+}
+
+.block-menu-footer {
+  grid-column-gap: var(--gap--gap-2x);
+  grid-row-gap: var(--gap--gap-2x);
+  flex-flow: row;
+  display: flex;
+}
+
+.block-menu-footer.v2 {
+  grid-column-gap: var(--gap--gap-1x);
+  grid-row-gap: var(--gap--gap-1x);
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.block-content-menu-footer {
+  grid-column-gap: var(--gap--gap-1x);
+  grid-row-gap: var(--gap--gap-1x);
+  flex-flow: column;
+  display: flex;
+}
+
+.wrapper-made-by-footer {
+  justify-content: space-between;
+  align-items: flex-end;
+  display: flex;
+}
+
+.block-made-by {
+  grid-column-gap: var(--gap--gap-0-5x);
+  grid-row-gap: var(--gap--gap-0-5x);
+  align-items: center;
+  display: flex;
+}
+
+.wrapper-block-menu-footer {
+  grid-column-gap: var(--gap--gap-8x);
+  grid-row-gap: var(--gap--gap-8x);
+  flex-flow: row;
+  display: flex;
+}
+
+.wrapper-block-made-by {
+  grid-column-gap: var(--gap--gap-4x);
+  grid-row-gap: var(--gap--gap-4x);
+  display: flex;
+}
+
+/* Responsive */
+@media screen and (max-width: 991px) {
+  .wrapper-footer {
+    height: 55vh;
+  }
+
+  .block-footer {
+    padding-top: var(--gap--gap-8x);
+  }
+
+  .wrapper-block-content-footer {
+    flex-flow: row;
+  }
+
+  .block-content-footers.v2 {
+    flex: 1;
+  }
+
+  .wrapper-block-menu-footer {
+    grid-column-gap: var(--gap--gap-8x);
+    grid-row-gap: var(--gap--gap-8x);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .block-footer {
+    grid-column-gap: var(--gap--gap-8x);
+    grid-row-gap: var(--gap--gap-8x);
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .wrapper-footer {
+    height: 90vh;
+  }
+
+  .block-footer {
+    padding-top: var(--layout--section-spacing-1-5x);
+    flex-flow: column;
+  }
+
+  .logo-footer {
+    width: 50vw;
+  }
+
+  .wrapper-block-content-footer {
+    grid-column-gap: var(--gap--gap-8x);
+    grid-row-gap: var(--gap--gap-8x);
+    flex-flow: column;
+  }
+
+  .block-content-footers.v2 {
+    padding-top: var(--gap--gap-6x);
+    flex: 1;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .block-content-footers.v1 {
+    flex-flow: column;
+  }
+
+  .block-menu-footer {
+    flex-flow: column;
+    flex: 1;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .block-menu-footer.v2 {
+    flex: 0 auto;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .block-content-menu-footer {
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .wrapper-made-by-footer {
+    grid-column-gap: var(--gap--gap-8x);
+    grid-row-gap: var(--gap--gap-8x);
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .block-made-by {
+    grid-column-gap: var(--gap--gap-1x);
+    grid-row-gap: var(--gap--gap-1x);
+  }
+
+  .wrapper-block-menu-footer {
+    flex: 1;
+  }
+}

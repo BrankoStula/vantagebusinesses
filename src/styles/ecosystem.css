@@ -1,0 +1,122 @@
+/* ============================================================
+   ECOSYSTEM SECTION — Logo marquee / partner strip
+   ============================================================ */
+
+.wrapper-partner {
+  padding-top: var(--layout--section-spacing-2x);
+  padding-bottom: var(--layout--section-spacing-2x);
+  grid-column-gap: var(--gap--gap-4x);
+  grid-row-gap: var(--gap--gap-4x);
+  flex-flow: column;
+  display: flex;
+}
+
+.title-partner {
+  padding-right: var(--layout--container-spacing);
+  padding-left: var(--layout--container-spacing);
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  display: flex;
+}
+
+.block-title-partner.v1 {
+  max-width: 18vw;
+}
+
+.block-title-partner.v2 {
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  display: flex;
+}
+
+.partner {
+  grid-column-gap: var(--gap--gap-8x);
+  grid-row-gap: var(--gap--gap-8x);
+  height: 4vw;
+  display: flex;
+}
+
+.block-partner {
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 12vw;
+  display: flex;
+}
+
+.logo-partner {
+  filter: brightness(40%);
+}
+
+.block-partners {
+  grid-column-gap: 8vw;
+  grid-row-gap: 8vw;
+  flex-flow: row;
+  width: 200vw;
+  display: flex;
+  position: relative;
+}
+
+.wrapper-partners {
+  position: relative;
+  overflow: hidden;
+}
+
+.block-partner-move {
+  width: 200vw;
+}
+
+.bg-partner {
+  z-index: 1;
+  background-image: linear-gradient(90deg, var(--color--black) 15%, var(--color--transparent));
+  width: 15vw;
+  height: 100%;
+  position: absolute;
+}
+
+.bg-partner.v1 {
+  inset: 0% auto 0% 0%;
+}
+
+.bg-partner.v2 {
+  background-image: linear-gradient(270deg, var(--color--black) 15%, var(--color--transparent));
+  inset: 0% 0% 0% auto;
+}
+
+/* Responsive */
+@media screen and (max-width: 991px) {
+  .block-partner {
+    max-width: 15vw;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .block-title-partner.v1 {
+    max-width: 30vw;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .wrapper-partner {
+    grid-column-gap: var(--gap--gap-8x);
+    grid-row-gap: var(--gap--gap-8x);
+  }
+
+  .block-title-partner.v1 {
+    max-width: 40vw;
+  }
+
+  .partner {
+    height: 8vw;
+  }
+
+  .block-partner {
+    max-width: 28vw;
+  }
+
+  .block-partners, .block-partner-move {
+    width: 500vw;
+  }
+}
