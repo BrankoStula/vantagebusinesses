@@ -11,7 +11,10 @@ const DotLottieReact = dynamic(
   { ssr: false }
 );
 
-const HERO_TEXT_LINES = ["Automate decisions", "with confidence."];
+const HERO_TEXT_LINES = [
+  "Revenue isn't the problem.",
+  "Operations are."
+];
 const HERO_TEXT = HERO_TEXT_LINES.join(" ");
 
 export default function HeroSection() {
@@ -129,7 +132,7 @@ export default function HeroSection() {
             <div className="wrapper-text-hero">
               <div className="block-text-hero">
                 <div className="wrapper-sub-title-hero">
-                  <div className="text">AI that works.</div>
+                  <div className="text">Discover Your Business’s True Worth.</div>
                 </div>
                 <div className="text-hero hero-text-layout" aria-label={HERO_TEXT} style={{ color: "#ffffff" }}>
                   <span className="sr-only">{HERO_TEXT}</span>

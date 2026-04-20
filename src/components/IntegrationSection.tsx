@@ -11,10 +11,12 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 
 type IntegrationClass = "v1" | "v2" | "v3" | "v4" | "v5" | "v6" | "v7";
 
+// 1. Added isCenter to the type definition
 type IntegrationItem = {
   src: string;
   alt: string;
   cls: IntegrationClass;
+  isCenter?: boolean; 
 };
 
 type LogoTarget = {
@@ -29,14 +31,15 @@ type LogoTarget = {
 const HEADLINE_BASE_COLOR = "hsla(0, 0%, 31.33%, 1)";
 const HEADLINE_ACTIVE_COLOR = "#229eff";
 
+// 2. Updated array with your requested logos
 const integrations: IntegrationItem[] = [
-  { src: "/images/logoipsum-374.png", alt: "Stylized geometric logo with nested chevrons.", cls: "v1" },
-  { src: "/images/logoipsum-376.png", alt: "Abstract symmetrical geometric shape.", cls: "v2" },
-  { src: "/images/logoipsum-407.png", alt: "Abstract geometric logo forming a hexagonal pattern.", cls: "v3" },
-  { src: "/images/logoipsum-411.png", alt: "Black star shape with trapezoid segments.", cls: "v4" },
-  { src: "/images/logoipsum-368.png", alt: "Abstract black and white geometric shape.", cls: "v5" },
-  { src: "/images/logoipsum-381.png", alt: "Abstract circular shape with diagonal slashes.", cls: "v6" },
-  { src: "/images/logoipsum-386.png", alt: "Abstract geometric logo forming a stylized letter A.", cls: "v7" },
+  { src: "/images/stripe-logo.svg", alt: "Stripe payment processing.", cls: "v1" },
+  { src: "/images/hubspot-logo.svg", alt: "HubSpot CRM platform.", cls: "v2" },
+  { src: "/images/aws-logo.svg", alt: "Amazon Web Services.", cls: "v3" },
+  { src: "/logo_short.svg", alt: "Vantage company logo.", cls: "v4", isCenter: true },
+  { src: "/images/zapier-logo.svg", alt: "Zapier automation platform.", cls: "v5" },
+  { src: "/images/typescript-logo.svg", alt: "TypeScript programming language.", cls: "v6" },
+  { src: "/images/quickbooks-logo.svg", alt: "QuickBooks accounting software.", cls: "v7" },
 ];
 
 const logoTargets: Record<IntegrationClass, LogoTarget> = {
@@ -213,6 +216,13 @@ export default function IntegrationSection() {
                       width={60}
                       height={60}
                       className="image-icon-integration"
+                      style={{ 
+                        objectFit: 'contain',
+                        // 3. Dynamic filter: Keep center bright, make others grayscale/faded
+                        filter: item.isCenter ? 'none' : 'grayscale(100%) opacity(40%) brightness(150%)',
+                        // Boost scale slightly for the center logo if needed
+                        transform: item.isCenter ? 'scale(1.2)' : 'scale(1)'
+                      }}
                     />
                   </div>
                 ))}

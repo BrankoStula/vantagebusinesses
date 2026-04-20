@@ -138,7 +138,8 @@ export default function CtaSection() {
                   </div>
                   <div className="contact-details">
                     <strong>Email</strong>
-                    <a href="mailto:hello@vantage.com">hello@vantage.com</a>
+                    <a href="mailto:jay@vantagebusinesses.com">jay@vantagebusinesses.com</a>
+                    <a href="mailto:ben@vantagebusinesses.com">ben@vantagebusinesses.com</a>
                   </div>
                 </li>
                 <li>
@@ -147,7 +148,8 @@ export default function CtaSection() {
                   </div>
                   <div className="contact-details">
                     <strong>Phone</strong>
-                    <a href="tel:+12367889">(+123) 678 89</a>
+                    <a href="tel:+14036078677">Jay — +1 (403) 607-8677</a>
+                    <a href="tel:+447538047967">Ben — +44 7538 047967</a>
                   </div>
                 </li>
                 <li>
@@ -155,8 +157,8 @@ export default function CtaSection() {
                     <MapPin size={24} strokeWidth={1.5} />
                   </div>
                   <div className="contact-details">
-                    <strong>Office</strong>
-                    <span>San Francisco, CA<br />United States</span>
+                    <strong>Locations</strong>
+                    <span>Calgary, Canada &amp; United Kingdom</span>
                   </div>
                 </li>
               </ul>

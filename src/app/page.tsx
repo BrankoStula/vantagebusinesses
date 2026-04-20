@@ -3,13 +3,13 @@ import HeroSection from "@/components/HeroSection";
 import ScrambleAnimation from "@/components/ScrambleAnimation";
 import EcosystemSection from "@/components/EcosystemSection";
 import ProductSection from "@/components/ProductSection";
-import FeaturesSection from "@/components/FeaturesSection";
+import ProblemSection from "@/components/ProblemSection";
 import LabSection from "@/components/LabSection";
 import WorkflowSection from "@/components/WorkflowSection";
-import PricingSection from "@/components/PricingSection";
 import IntegrationSection from "@/components/IntegrationSection";
 import CtaSection from "@/components/CtaSection";
 import Footer from "@/components/Footer";
+import CalculatorSection from "@/components/CalculatorSection";
 
 export default function Home() {
   return (
@@ -18,10 +18,10 @@ export default function Home() {
       <HeroSection />
       <EcosystemSection />
       <ProductSection />
-      <FeaturesSection />
+      <ProblemSection />
       <LabSection />
       <WorkflowSection />
-      <PricingSection />
+      <CalculatorSection />
       <IntegrationSection />
       <CtaSection />
       <Footer />

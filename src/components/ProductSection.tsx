@@ -4,9 +4,10 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
 import Image from "next/image";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 export default function ProductSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -91,20 +92,29 @@ export default function ProductSection() {
       const titleTexts   = Array.from(section.querySelectorAll<HTMLElement>(".block-title-product.v2 .medium-big-text"));
       const titleV1El    = section.querySelector<HTMLElement>(".block-title-product.v1");
 
-      if (wrapperBlock)        gsap.set(wrapperBlock, { opacity: 0, y: 60 });
-      if (titleV1El)           gsap.set(titleV1El,    { opacity: 0 });
-      if (titleTexts.length)   gsap.set(titleTexts,   { opacity: 0, y: 24, color: "#229eff" });
+      if (wrapperBlock) gsap.set(wrapperBlock, { opacity: 0, y: 70 });
+      if (titleV1El)    gsap.set(titleV1El,    { opacity: 0, y: 16 });
+
+      // Split title lines into individual words for staggered reveal
+      let splitTitle: SplitText | null = null;
+      let words: HTMLElement[] = [];
+      if (titleTexts.length) {
+        splitTitle = new SplitText(titleTexts, { type: "words" });
+        words = splitTitle.words as HTMLElement[];
+        gsap.set(words, { opacity: 0, y: 22, filter: "blur(10px)", color: "#229eff" });
+      }
 
       const entranceTl = gsap.timeline({ paused: true });
-      // Left block (ABOUT US + plus grid) fades in
-      if (titleV1El) entranceTl.to(titleV1El, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0);
-      // Title text sweeps up: blue → white
-      if (titleTexts.length) entranceTl.to(titleTexts, {
-        opacity: 1, y: 0, color: "#ffffff",
-        stagger: 0.14, duration: 0.65, ease: "power2.out",
-      }, 0.08);
+      // Left block rises in
+      if (titleV1El) entranceTl.to(titleV1El, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0);
+      // Words sweep up one by one: blue → white, blur clears
+      if (words.length) entranceTl.to(words, {
+        opacity: 1, y: 0, filter: "blur(0px)", color: "#ffffff",
+        stagger: { amount: 0.55, from: "start" },
+        duration: 0.7, ease: "power3.out",
+      }, 0.12);
       // Isometric structure rises in
-      if (wrapperBlock) entranceTl.to(wrapperBlock, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }, 0.2);
+      if (wrapperBlock) entranceTl.to(wrapperBlock, { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" }, 0.2);
 
       ScrollTrigger.create({
         trigger: section,
@@ -184,7 +194,7 @@ export default function ProductSection() {
       [block1, block2, block3, block4].forEach((el) => {
         if (el) gsap.set(el, { y: 0 });
       });
-      // Text invisible
+      // Text invisible, no offset (fromTo handles the from state)
       steps.forEach(({ texts, circle }) => {
         if (texts.length) gsap.set(texts, { opacity: 0 });
         if (circle) gsap.set(circle, { backgroundColor: "#000", borderColor: "#333", color: "#fff" });
@@ -202,22 +212,27 @@ export default function ProductSection() {
         },
       });
 
-      // Preamble
-      if (titleV2)     mainTl.to(titleV2,               { opacity: 0, duration: 0 }, 0.37);
+      // Preamble — title drifts up + blurs out as scroll starts
+      if (titleV2) mainTl.to(titleV2, { opacity: 0, y: -28, filter: "blur(8px)", duration: 0.32, ease: "power2.in" }, 0.05);
       if (logoCircles) mainTl.to(logoCircles,            { opacity: 1, duration: 0 }, 0.5);
                        mainTl.to(Array.from(descBlocks), { opacity: 1, duration: 0 }, 1.0);
 
       steps.forEach(({ texts, circle, block, icon, textShow, textHide }) => {
-        // ── Activate step ──
-        if (texts.length) mainTl.to(texts, { opacity: 1, duration: 0 }, textShow);
-        if (circle) mainTl.to(circle, { backgroundColor: "#fff", borderColor: "#229eff", color: "#000", duration: 0 }, textShow);
+        // ── Activate step — text slides in from right ──
+        if (texts.length) mainTl.fromTo(
+          texts,
+          { opacity: 0, x: 18 },
+          { opacity: 1, x: 0, duration: 0.22, ease: "power2.out" },
+          textShow
+        );
+        if (circle) mainTl.to(circle, { backgroundColor: "#fff", borderColor: "#229eff", color: "#000", duration: 0.15 }, textShow);
         if (block) mainTl.to(block, { y: liftY, duration: LIFT_DUR, ease: "power2.out" }, textShow + R_BLOCK);
         if (icon) mainTl.to(icon, { y: liftY, rotation: -38, "--icon-gray": "0%", duration: LIFT_DUR, ease: "power2.out" }, textShow + R_ICON);
 
-        // ── Reset step (all except last) ──
+        // ── Reset step (all except last) — text slides out to left ──
         if (textHide !== null) {
-          if (texts.length) mainTl.to(texts, { opacity: 0, duration: 0 }, textHide);
-          if (circle) mainTl.to(circle, { backgroundColor: "#000", borderColor: "#333", color: "#fff", duration: 0 }, textHide);
+          if (texts.length) mainTl.to(texts, { opacity: 0, x: -14, duration: 0.18, ease: "power2.in" }, textHide);
+          if (circle) mainTl.to(circle, { backgroundColor: "#000", borderColor: "#333", color: "#fff", duration: 0.15 }, textHide);
           if (block) mainTl.to(block, { y: 0, duration: LOWER_DUR, ease: "power2.in" }, textHide);
           if (icon) mainTl.to(icon, { y: 0, rotation: 0, "--icon-gray": "100%", duration: RETURN_DUR, ease: "none" }, textShow + R_RETURN);
         }
@@ -225,6 +240,8 @@ export default function ProductSection() {
 
       // Pad so the last lift tween has room to play out fully
       mainTl.addLabel("end", 9.32 + R_ICON + LIFT_DUR + 0.5);
+
+      return () => { splitTitle?.revert(); };
     },
     { scope: sectionRef }
   );
@@ -257,7 +274,7 @@ export default function ProductSection() {
                   </div>
                 </div>
 
-                <div className="content-product">
+<div className="content-product">
                   <div className="wrapper-content-product v1">
                     <div className="block-logo-circle-product">
                       {(["01", "02", "03", "04"] as const).map((num, i) => (
@@ -345,35 +362,37 @@ export default function ProductSection() {
                   <div className="wrapper-content-product v3">
                     <div className="wrapper-block-content-product">
                       <div className="block-content-product">
-                        <div className="small-text align-right animation-v1">Advanced Intelligent Analytics Platform</div>
-                        <div className="small-text align-right animation-v2">Unified Data Intelligence Foundation</div>
-                        <div className="small-text align-right animation-v3">Adaptive Automation Workflow System</div>
-                        <div className="small-text align-right animation-v4">Secure and Scalable Core Infrastructure</div>
+                        {/* STRATEGY UPDATE: The 4 stages of the Vantage transformation */}
+                        <div className="small-text align-right animation-v1">Discovering profit leaks and operational friction.</div>
+                        <div className="small-text align-right animation-v2">Connecting disparate systems into a unified architecture.</div>
+                        <div className="small-text align-right animation-v3">Replacing manual tasks with intelligent, self-running workflows.</div>
+                        <div className="small-text align-right animation-v4">Protecting assets and driving the final enterprise multiple.</div>
                       </div>
                       <div className="block-content-title-product">
-                        <div className="medium-big-text color-gradient animated-v1">Analytics</div>
-                        <div className="medium-big-text color-gradient animated-v2">Data</div>
-                        <div className="medium-big-text color-gradient animated-v3">Auto</div>
-                        <div className="medium-big-text color-gradient animated-v4">Security</div>
+                        {/* STRATEGY UPDATE: Short, punchy phase names */}
+                        <div className="medium-big-text color-gradient animated-v1">Audit</div>
+                        <div className="medium-big-text color-gradient animated-v2">Connect</div>
+                        <div className="medium-big-text color-gradient animated-v3">Automate</div>
+                        <div className="medium-big-text color-gradient animated-v4">Scale</div>
                       </div>
                     </div>
                     <div className="block-content-desc-products">
                       <div className="block-content-desc-product">
-                        <div>SYSTEM</div>
+                        <div>PHASE</div>
                         <div className="wrapper-content-desc-product">
-                          <div className="scramble v1 animated-v1">REAL-TIME</div>
-                          <div className="scramble v1 animated-v2">CONNECTED</div>
-                          <div className="scramble v1 animated-v3">SMART</div>
-                          <div className="scramble v1 animated-v4">ENTERPRISE</div>
+                          <div className="scramble v1 animated-v1">DISCOVERY</div>
+                          <div className="scramble v1 animated-v2">ARCHITECTURE</div>
+                          <div className="scramble v1 animated-v3">DEPLOYMENT</div>
+                          <div className="scramble v1 animated-v4">VALUATION</div>
                         </div>
                       </div>
                       <div className="block-content-desc-product">
-                        <div>PERFOMANCE</div>
+                        <div>OUTCOME</div>
                         <div className="wrapper-content-desc-product">
-                          <div className="scramble v1 animated-v1">PREDICTIVE</div>
-                          <div className="scramble v1 animated-v2">SINGLE SOURCE</div>
+                          <div className="scramble v1 animated-v1">CLARITY</div>
+                          <div className="scramble v1 animated-v2">COHESION</div>
                           <div className="scramble v1 animated-v3">EFFICIENCY</div>
-                          <div className="scramble v1 animated-v4">SEAMLESS</div>
+                          <div className="scramble v1 animated-v4">PREMIUM EXIT</div>
                         </div>
                       </div>
                     </div>

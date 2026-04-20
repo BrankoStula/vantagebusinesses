@@ -236,17 +236,26 @@ export default function Navbar() {
             </div>
 
             <div className="list-menu-info">
-              <div className="scramble">LOCATION</div>
+              <div className="scramble">JAY — NORTH AMERICA</div>
               <div className="wrapper-list-menu-info">
-                <div className="medium-text">San Francisco, CA</div>
+                <a href="mailto:jay@vantagebusinesses.com" className="w-inline-block">
+                  <div className="medium-text">jay@vantagebusinesses.com</div>
+                </a>
+                <a href="tel:+14036078677" className="w-inline-block">
+                  <div className="medium-text">+1 (403) 607-8677</div>
+                </a>
               </div>
             </div>
 
             <div className="list-menu-info">
-              <div className="scramble">CONTACT</div>
+              <div className="scramble">BEN — UNITED KINGDOM</div>
               <div className="wrapper-list-menu-info">
-                <div className="medium-text">hello@vantage.com</div>
-                <div className="medium-text">(+123) 678 89</div>
+                <a href="mailto:ben@vantagebusinesses.com" className="w-inline-block">
+                  <div className="medium-text">ben@vantagebusinesses.com</div>
+                </a>
+                <a href="tel:+447538047967" className="w-inline-block">
+                  <div className="medium-text">+44 7538 047967</div>
+                </a>
               </div>
             </div>
           </div>
